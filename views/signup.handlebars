@@ -1,0 +1,167 @@
+<div class="wrapper">
+  <nav class="navbar navbar-default">
+      <div class="navbar-header" id="login-navbar-header">
+        <a class="navbar-brand" href="/">
+          
+        </a>
+        <h1 style="color: black">Welcome to Hate2Date</h1>
+      </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Sign Up Form</h2>
+        <form class="signup">
+          <div class="form-group">
+            <label for="exampleInputname">Name</label>
+            <input type="text" class="form-control" id="name-input" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="email-input" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="password-input" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputOccupation">What kind of relationship are you looking for?</label>
+            <input type="text" class="form-control" id="occupation-input" placeholder="Just wanna chill, Long-term, Short-term, Someone to talk to, ect">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputLocation">Location</label>
+            <br>
+            <select data-placeholder="Location (US State)" class="selectpicker" id="location-input">
+            <option value="" disabled selected>Location (US State)</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Arizona">Arizona</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="Delaware">Delaware</option>
+            <option value="Washington, DC">District Of Columbia</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Lousisana">Louisiana</option>
+            <option value="Maine">Maine</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Montana">Montana</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New Hamsphire">New Hampshire</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="New Mexico">New Mexico</option>
+            <option value="New York">New York</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="North Dakota">North Dakota</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Oregon">Oregon</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="Rhode Island">Rhode Island</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputInterest">Interests</label>
+            <br>
+
+            <select data-placeholder="Interest 1" class="selectpicker" id="interest1-input">
+            <option value="" disabled selected>Hate the Most</option>
+            <option value="Business">Politics</option>
+            <option value="Entertainment">Work</option>
+            <option value="Gaming">Traffic</option>
+            <option value="Music">Weather</option>
+            <option value="Politics">Kids</option>
+            <option value="Science and Nature">Cats</option>
+            <option value="Sports">Vegans</option>
+            <option value="Technology">Miscellanious</option>
+            </select>
+            <select data-placeholder="Interest 2" class="selectpicker" id="interest2-input">
+            <option value="" disabled selected>Hate a Decent Amount</option>
+            <option value="Business">Politics</option>
+            <option value="Entertainment">Work</option>
+            <option value="Gaming">Traffic</option>
+            <option value="Music">Weather</option>
+            <option value="Politics">Kids</option>
+            <option value="Science and Nature">Cats</option>
+            <option value="Sports">Vegans</option>
+            <option value="Technology">Miscellanious</option>
+            </select>
+            <br>
+            <select data-placeholder="Interest 3" class="selectpicker" id="interest3-input">
+             <option value="" disabled selected>Kinda Hate</option>
+            <option value="Business">Politics</option>
+            <option value="Entertainment">Work</option>
+            <option value="Gaming">Traffic</option>
+            <option value="Music">Weather</option>
+            <option value="Politics">Kids</option>
+            <option value="Science and Nature">Cats</option>
+            <option value="Sports">Vegans</option>
+            <option value="Technology">Miscellanious</option>          
+            </select>
+            <select data-placeholder="Interest 4" class="selectpicker" id="interest4-input">
+           <option value="" disabled selected>Sorta Hate but only a little</option>
+            <option value="Business">Politics</option>
+            <option value="Entertainment">Work</option>
+            <option value="Gaming">Traffic</option>
+            <option value="Music">Weather</option>
+            <option value="Politics">Kids</option>
+            <option value="Science and Nature">Cats</option>
+            <option value="Sports">Vegans</option>
+            <option value="Technology">Miscellanious</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputImage">Profile Pic (url)</label>
+            <input type="text" class="form-control" id="image-input" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputBio">About You</label>
+            <textarea type="text" class="form-control" id="bio-input" placeholder="About You"></textarea>
+        </div>
+        <div>
+            <p id="errorMessage" style="color:red"></p>
+        </div>
+          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span> <span class="msg"></span>
+          </div>
+          <button type="submit" class="btn btn-primary" href="/member">Sign Up</button>
+        </form>
+        <br />
+      </div> <!-- End Col -->
+      <div class="col-md-2">
+        <p>Or log in <a href="/login">here</a></p>
+      </div>
+    </div> <!-- End Row -->
+  </div> <!-- End container -->
+
+      <div class="push"></div>
+
+</div> <!-- End Wrapper -->
+
+    <footer>
+        Hate2Date &copy; 2018
+        <a href="/about">About Us</a>
+    </footer>
+  
+  <script type="text/javascript" src="js/signup.js"></script>
