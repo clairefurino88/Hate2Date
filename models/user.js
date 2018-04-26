@@ -36,7 +36,6 @@ module.exports = function (sequelize, DataTypes) {
     },
     imageUrl: {
       type: DataTypes.STRING,
-      allowNull: true
     },
     bio: {
       type: DataTypes.STRING,
