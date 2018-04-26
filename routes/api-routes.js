@@ -24,10 +24,6 @@ module.exports = function(app) {
       password: req.body.password,
       occupation: req.body.occupation,
       location: req.body.location,
-      interest1: req.body.interest1,
-      interest2: req.body.interest2,
-      interest3: req.body.interest3,
-      interest4: req.body.interest4,
       image: req.body.image,
       bio: req.body.bio
     }).then(function() {
@@ -60,10 +56,6 @@ module.exports = function(app) {
         id: req.user.id,
         occupation: req.user.occupation,
         location: req.user.location,
-        interest1: req.user.interest1,
-        interest2: req.user.interest2,
-        interest3: req.user.interest3,
-        interest4: req.user.interest4,
         image: req.user.image,
         bio: req.user.bio
       });

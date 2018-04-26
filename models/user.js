@@ -30,22 +30,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    interest1: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    interest2: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    interest3: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    interest4: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     // The password cannot be null
     password: {
       type: DataTypes.STRING,
