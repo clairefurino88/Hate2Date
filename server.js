@@ -10,10 +10,10 @@ var passport = require("./config/passport");
 MySQLStore = require('connect-mysql')(session),
     options = {
       config: {
-        user: 'o3rml8apjwxy1c69', 
-        password: "b5j56j8qm4jveqru", 
-        database: 'qwfswbdemftjim30',
-        host: "thh2lzgakldp794r.cbetxkdyhwsb.us-east-1.rds.amazonaws.com" 
+        user: 'f7t6dibfcrnibnfq', 
+        password: "bodr1nrqv4dttpmb", 
+        database: 'tkkw0ak823hus6lx',
+        host: "umabrisfx8afs3ja.cbetxkdyhwsb.us-east-1.rds.amazonaws.com" 
       }
     };
 

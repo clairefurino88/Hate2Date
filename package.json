@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexanderpaulino/Social-Media-AP.git"
+    "url": "git+https://github.com/clairefurino88/Hate2Date"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alexanderpaulino/Social-Media-AP/issues"
+    "url": "https://github.com/clairefurino88/Hate2Date/issues"
   },
-  "homepage": "https://github.com/alexanderpaulino/Social-Media-AP#readme",
+  "homepage": "https://github.com/clairefurino88/Hate2Date#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
