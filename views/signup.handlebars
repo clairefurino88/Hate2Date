@@ -1,16 +1,32 @@
 <div class="wrapper">
   <nav class="navbar navbar-default">
-      <div class="navbar-header" id="login-navbar-header">
-        <a class="navbar-brand" href="/">
-          
-        </a>
-        <h1 style="color: black">Welcome to Hate2Date</h1>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="navbar-header" id="login-navbar-header">
+          <a class="navbar-brand" href="/">
+            <div>
+              <img id="logo" src="/img/h2d.jpg" alt="logo">
+            </div>
+          </a>
+          <h1 style="color: black"> Hate2Date</h1>
+        </div>
       </div>
+      {{!-- <div class="col-md-4"> --}}
+        <div class="text-center">
+          <a href="/login">
+            <button type="button" class="btn btn-danger"> Login </button>
+          </a>
+        </div>
+      {{!-- </div> --}}
+    </div>
   </nav>
 
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-6 jumbotron about">
+
+      </div>
+      <div class="col-md-6 sign_up">
         <h2>Sign Up Form</h2>
         <form class="signup">
           <div class="form-group">
@@ -33,6 +49,7 @@
             <label for="exampleInputLocation">Location</label>
             <br>
             <select data-placeholder="Location (US State)" class="selectpicker" id="location-input">
+            
             <option value="" disabled selected>Location (US State)</option>
             <option value="Alabama">Alabama</option>
             <option value="Alaska">Alaska</option>
@@ -81,39 +98,44 @@
             </select>
           </div>
         
-
           <div class="form-group">
             <label for="exampleInputImage">Profile Pic (url)</label>
             <input type="text" class="form-control" id="image-input" placeholder="">
-        </div>
-        <div class="form-group">
+          </div>
+          <div class="form-group">
             <label for="exampleInputBio">About You</label>
             <textarea type="text" class="form-control" id="bio-input" placeholder="About You"></textarea>
-        </div>
-        <div>
+          </div>
+          <div>
             <p id="errorMessage" style="color:red"></p>
-        </div>
+          </div>
           <div style="display: none" id="alert" class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span> <span class="msg"></span>
-          </div><a href="/member">
+
+            <span class="sr-only">Error:</span> 
+            <span class="msg"></span>
+          </div>
+          <a href="/member">
           <button type="submit" class="btn btn-primary" href="/member">Sign Up</button></a>
+
         </form>
         <br />
-      </div> <!-- End Col -->
-      <div class="col-md-2">
-        <p>Or log in <a href="/login">here</a></p>
       </div>
-    </div> <!-- End Row -->
-  </div> <!-- End container -->
+      <!-- End Col -->
 
-      <div class="push"></div>
+    </div>
+    <!-- End Row -->
+  </div>
+  <!-- End container -->
 
-</div> <!-- End Wrapper -->
+  <div class="push"></div>
 
-    <footer>
-        Hate2Date &copy; 2018
-        <a href="/about">About Us</a>
-    </footer>
-  
-  <script type="text/javascript" src="js/signup.js"></script>
+</div>
+<!-- End Wrapper -->
+
+<footer>
+  Hate2Date &copy; 2018
+  <a href="/about">About Us</a>
+</footer>
+
+<script type="text/javascript" src="js/signup.js"></script>
