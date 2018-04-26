@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "",
-    "port": 3307,
+    "password": "root",
+    "port": 3306,
     "database": "hate2date",
     "host": "127.0.0.1",
     "dialect": "mysql"
