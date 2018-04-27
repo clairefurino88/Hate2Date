@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "root",
     "port": 3307,
     "database": "hate2date",
     "host": "127.0.0.1",
