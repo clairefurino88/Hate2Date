@@ -1,50 +1,60 @@
+/*****************************************************************/
+/***********************SIGN UP PAGE******************************/
+/*****************************************************************/
 body{
-     color: #010101;
-
-
+  color: #010101;
 }
-#logo {
-    position:relative;
-    top: -46px;
-    width: 120px;
-    height: 120px;
-    padding: 10px;
-    background: white;
-    border-radius: 16%;
-    border: 1px;
-    border-color: white;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
-  }
-  .sign_up{
-    padding-left: 40px;
-    top: 0px;
-    margin-top: 43px;
-    margin-left: 0px;
-    left: 40px;
-    border-radius: 16%;
 
-  }
-  .about{
-    margin-top: 75px;
-  }
-  .btn-danger{
-      margin-top: 30px;
-      margin-left: 100px;
-  }
-  .navbar, .sign_up {
-    padding: 40px 0 0 50px;
+#logo {
+  position:relative;
+  top: -46px;
+  width: 120px;
+  height: 120px;
+  padding: 10px;
+  background: white;
+  border-radius: 16%;
+  border: 1px;
+  border-color: white;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sign_up{
+  padding-left: 40px;
+  top: 0px;
+  margin-top: 43px;
+  margin-left: 0px;
+  left: 40px;
+  border-radius: 16%;
+}
+
+.about{
+  margin-top: 75px;
+}
+
+.btn-danger{
+  margin-top: 30px;
+  margin-left: 100px;
+}
+
+.navbar, .sign_up {
+  padding: 40px 0 0 50px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
   border: 0px solid black;
-    /* border-radius: 0; */
+  /* border-radius: 0; */
   
-    background: white;
-    background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1);
+  background: white;
+  background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1);
   background: -o-linear-gradient(bottom right, #31708e, #8Fc1e3);
   background: -moz-linear-gradient(bottom right, #31708e, #8Fc1e3);
   background: linear-gradient(to bottom right, #fe0000, #1a1a1a);
-  }
-  .form-group{
+}
+
+.form-group{
     margin-right: 30px;
-  }
+}
+
+/*****************************************************************/
+/***********************LOGIN PAGE CSS****************************/
+/*****************************************************************/
