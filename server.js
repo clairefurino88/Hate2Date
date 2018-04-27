@@ -108,7 +108,7 @@ app.set("view engine", "handlebars");
 
 // Requiring Routes
 require("./routes/html-routes.js")(app);
-require("./routes/api-routes-luis.js")(app);
+require("./routes/api-routes.js")(app);
 
 // Syncing Database and Launching Express Server
 db.sequelize.sync().then(function() {
