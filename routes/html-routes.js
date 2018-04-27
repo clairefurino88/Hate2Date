@@ -1,46 +1,40 @@
-// Requiring 'Path' for relative routes to HTML files
+// Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
-var passport = require("passport");
 
-// Requiring custom middleware for user authentication validation
+// Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function (app) {
+module.exports = function(app) {
 
-  // Root Route
-  app.get("/", function (req, res) {
-    // If user exists, send user to members page
+  app.get("/", function(req, res) {
+    // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/members");
     }
+    // res.sendFile(path.join(__dirname, "../public/signup.html"));
     res.render("signup");
   });
 
-  // Login Route for Login Page
-  app.get("/login", function (req, res) {
+  app.get("/login", function(req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/members");
+    }
+    // res.sendFile(path.join(__dirname, "../public/login.html"));
     res.render("login");
   });
 
-  // Login Route for Sign-Up Form
-  app.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), function (req, res) {
-    // User redirected to '/members' via front-end anchor upon successful authentication
-    res.json('/members');
-  });
-
-  // Login Validation Middleware (isAuthenticated)
-  // Users not authenticated will be redirected to signup page
-  app.get("/members", isAuthenticated, function (req, res) {
+  // Here we've add our isAuthenticated middleware to this route.
+  // If a user who is not logged in tries to access this route they will be redirected to the signup page
+  app.get("/members", isAuthenticated, function(req, res) {
+    // res.sendFile(path.join(__dirname, "../public/members.html"));
     res.render("profile", req.user);
   });
 
-  // Sign-Out Route for Log-Out Button
-  app.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("/");
-  });
-
-  app.get("/about", function (req, res) {
+  app.get("/about", function(req, res) {
+    // res.sendFile(path.join(__dirname, "../public/members.html"));
     res.render("about", req.user);
   });
+
 
 };
