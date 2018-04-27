@@ -33,17 +33,6 @@ $(document).ready(function () {
       // Sign up user
       signUpUser(userData);
 
-      // Empty Sign-Up Form Values
-      // nameInput.val("");
-      // emailInput.val("");
-      // passwordInput.val("");
-      // occupationInput.val("");
-      // relationshipTypeInput.val("");
-      // locationInput.val("");
-      // imageInput.val("");
-      // bioInput.val("");
-      // $("#errorMessage").text("")
-
     }
     else {
 
@@ -60,8 +49,14 @@ $(document).ready(function () {
     $.ajax("/api/signup", {
       type: 'POST',
       data: newUser
-    }).then(function (data) {
-      window.location.replace(data);
+    }).then(function (pathname) {
+      
+      console.log("-----------url: \n", pathname);
+      var origin = window.location.origin;
+      var url = origin + pathname;
+      window.location.assign(url);
+      console.log(url);
+      
       // If error, throw boostrap alert
     }).catch(handleLoginErr);
 

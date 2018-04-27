@@ -29,7 +29,16 @@ passport.use(new LocalStrategy(
         });
       }
       // If none of the above, return the user
-      return done(null, dbUser);
+      return done(null, {
+        id: dbUser.id,
+        name: dbUser.name,
+        email: dbUser.email,
+        occupation: dbUser.occupation,
+        relationshipType: dbUser.relationshipType,
+        location: dbUser.location,
+        imageUrl: dbUser.imageUrl,
+        bio: dbUser.bio
+      });
     });
   }
 ));
