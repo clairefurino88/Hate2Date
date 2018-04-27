@@ -27,12 +27,51 @@ module.exports = function (app) {
         // Inspecting req.body
         console.log("\n >> app.post('/api/signup'...) >> req.body: \n\n", req.body);
 
-        db.User.create(req.body).then(function () {
-            res.redirect(307, "/login");
-        }).catch(function (error) {
-            console.log("\n >> app.post('/signup'...) >> error:\n\n", error);
-            res.json(error);
-        });
+        db.User.create(req.body)
+            .then(function (user) {
+                // console.log("\n >> app.post('/signup'...) >> user:\n\n", user);
+                // res.redirect(307, "/login");
+                // res.redirect('/members/user/'+ user.id);
+                // res.redirect('/', { method: 'GET'});
+                res.status(200).json('/login');
+            })
+            .catch(function (error) {
+                console.log("\n >> app.post('/api/signup'...) >> error:\n\n", error);
+                res.json(error);
+            });
+
+    });
+
+    app.get("/api/user", function (req, res) {
+
+        // Inspecting req.user
+        console.log("\n >> app.get('api/users/:id'...) >> req.user:\n\n", req.user);
+
+        // If user not logged in, send empty object
+        if (!req.user) {
+            res.redirect('/login')
+            // json({});
+        }
+        // Else, send back logged on user info
+        else {
+            db.User.findOne({
+                include: [db.Post],
+                where: { id: req.user.id }
+            }).then(function (dbUser) {
+                // Inspecting dbUser
+                console.log("\n >> app.get('api/users/:id'...) >> dbUser:\n\n", dbUser);
+                res.json({
+                    id: dbUser.id,
+                    name: dbUser.name,
+                    email: dbUser.email,
+                    occupation: dbUser.occupation,
+                    relationshipType: dbUser.relationshipType,
+                    location: dbUser.location,
+                    imageUrl: dbUser.imageUrl,
+                    bio: dbUser.bio
+                });
+            });
+        };
 
     });
 
@@ -91,7 +130,7 @@ module.exports = function (app) {
     app.put("/api/posts/:id", function (req, res) {
 
         db.Post.update(req.body,
-            { where: { id: request.params.id } }            
+            { where: { id: req.params.id } }
         ).then(function (result) {
             if (result.changedRows === 0) return res.status(404).end();
             // Confirming Successful Post Update
