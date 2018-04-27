@@ -1,20 +1,10 @@
+/*****************************************************************/
+/***********************SIGN UP PAGE******************************/
+/*****************************************************************/
 body{
      color: white;
      font-family: 'Roboto', sans-serif;
-
-
 }
-.nav_back{
-    background-image: url('/img/hnd_con.png');
-    /* height: 94px;
-    margin-top: -23px; */
-    /* background-size: cover; */
-    /* -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover; */
-    background-repeat: no-repeat, repeat;
-   
-    }
 #logo {
     position:relative;
     top: -48px;
@@ -29,7 +19,9 @@ body{
     cursor: pointer;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
   }
-  .sign_up{
+
+
+.sign_up{
     /* padding-left: 40px; */
     top: 0px;
     /* margin-top: 43px;
@@ -38,14 +30,28 @@ body{
     border-radius: 5%;
 
   }
-  .selectpicker{
-      color: black;
-  }
-  .about {
+.about {
     /* margin-top: 75px; */
     border-radius: 5%;  
 
   }
+
+.nav_back{
+    background-image: url('/img/hnd_con.png');
+    /* height: 94px;
+    margin-top: -23px; */
+    /* background-size: cover; */
+    /* -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover; */
+    background-repeat: no-repeat, repeat;
+   
+    }
+  
+  .selectpicker{
+      color: black;
+  }
+  
   .btn{
    background-color: #e1000e;
   }
@@ -83,3 +89,5 @@ body{
   .navbar{
     height: 138px;
   }
+
+

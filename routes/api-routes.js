@@ -1,101 +1,118 @@
-// Requiring our models and passport as we've configured it
+// Requiring Models (Sequelize) and Passport (Login Authentication)
 var db = require("../models");
-var passport = require("../config/passport");
+var passport = require("../config/passport.js");
 
-module.exports = function(app) {
-  // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the members page.
-  // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
-    // So we're sending the user back the route to the members page because the redirect will happen on the front end
-    // They won't get this or even be able to access this page if they aren't authed
-    res.json("/members");
-  });
+// Requiring Sequelize for query ordering in 'Post' model 'get' route
+var Sequelize = require("sequelize");
 
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
-  app.post("/api/signup", function(req, res) {
-    console.log(req.body);
-    db.User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      occupation: req.body.occupation,
-      location: req.body.location,
-      image: req.body.image,
-      bio: req.body.bio
-    }).then(function() {
-      res.redirect(307, "/api/login");
-    }).catch(function(err) {
-      console.log(err);
-      res.json(err);
-      // res.status(422).json(err.errors[0].message);
+// App Routes
+module.exports = function (app) {
+
+    // Passport Login Authentication Route
+    // If valid login, go to members page, otherwise, display error.
+    app.post("/api/login", passport.authenticate("local"), function (req, res) {
+
+        // Since we're doing a POST with JS, we can't actually redirect POST to GET
+        // so we're sending user back to members page because redirect will happen on front-end
+        // User will not hit this page if not authenticated
+        res.json("/members");
+
     });
-  });
 
-  // Route for logging user out
-  app.get("/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
-  });
+    // User Sign-Up Route
+    // User password automatically hashed and stored securely with 'BCrypt."
+    // Upon successful user creation, proceed to login, otherwise, display error.
+    app.post("/api/signup", function (req, res) {
 
-  // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function(req, res) {
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-    }
-    else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        name: req.user.name,
-        email: req.user.email,
-        id: req.user.id,
-        occupation: req.user.occupation,
-        location: req.user.location,
-        image: req.user.image,
-        bio: req.user.bio
-      });
-    }
-  });
+        // Inspecting req.body
+        console.log("\n >> app.post('/api/signup'...) >> req.body: \n\n", req.body);
 
-  app.get("/api/user_data/:name", function(req, res) {
-    db.User.findOne({
-      where: {
-        name: req.params.name
-      }
-    })
-    .then(function(result) {
-      res.json(result);
-    });
-  });
-
-//Feed API routes
-
- app.get("/api/allFeed", function(req, res) {
-
-
-        db.Feed.findAll({}).then(function(results) {
-
-            res.json(results);
+        db.User.create(req.body).then(function () {
+            res.redirect(307, "/login");
+        }).catch(function (error) {
+            console.log("\n >> app.post('/signup'...) >> error:\n\n", error);
+            res.json(error);
         });
-  });
 
-  app.post("/api/newFeed", function(req, res) {
+    });
 
-    console.log("Test-Post Data: ");
-    console.log(req.body);
+    // API 'GET' *Logged-On User* Route 
+    app.get("/api/users/:id", function (req, res) {
 
-    db.Feed.create({
-        author: req.body.author,
-        body: req.body.body,
-        created_at: req.body.created_at
-    }).then(function(results){
+        // Inspecting req.user
+        console.log("\n >> app.get('api/users/:id'...) >> req.user:\n\n", req.user);
 
-          res.end();
-    })
-  });
-}
+        // If user not logged in, send empty object
+        if (!req.user) {
+            res.json({});
+        }
+        // Else, send back logged on user info
+        else {
+            db.User.findOne({
+                include: [db.Post],
+                where: { id: req.params.id }
+            }).then(function (dbUser) {
+                // Inspecting dbUser
+                console.log("\n >> app.get('api/users/:id'...) >> dbUser:\n\n", dbUser);
+                res.json(dbUser);
+            });
+        };
+
+    });
+
+    // API 'GET' Route To *Fetch All Posts*
+    app.get("/api/posts", function (req, res) {
+
+        db.Post.findAll(
+            // Ordering by 'createdAt' in descending order
+            { order: ['createdAt', 'DESC'] }
+        ).then(function (data) {
+            // Rendering profile.handlebars
+            var hbsObject = { posts: data };
+            res.render("profile", hbsObject);
+            // Also sending back JSON data (if possible)
+            res.json(data);
+        });
+
+    });
+
+    // API 'POST' Route To Create *New Post*
+    app.post("/api/posts", function (req, res) {
+
+        // Inspecting req.body
+        console.log("\n >> app.get('/api/posts'...) >> req.body:\n\n", req.body);
+        db.Post.create(req.body).then(function (results) {
+            res.end();
+        });
+
+    });
+
+    // API 'PUT' Route for *Post Update*
+    app.put("/api/posts/:id", function (req, res) {
+
+        db.Post.update(req.body,
+            { where: { id: request.params.id } }            
+        ).then(function (result) {
+            if (result.changedRows === 0) return res.status(404).end();
+            // Confirming Successful Post Update
+            console.log("\n >> app.put('/api/posts/:id...) >> Post updated successfully!\n");
+            res.status(200).end();
+        });
+
+    });
+
+    // API 'DELETE' Route To *Remove Post* Route
+    app.delete("/api/posts/:id", function (req, res) {
+
+        db.Post.destroy(
+            { where: { id: req.params.id } }
+        ).then(function (result) {
+            if (result.changedRows === 0) return res.status(404).end();
+            // Confirming Successful Post Removal
+            console.log("\n >> app.delete('/api/posts/:id...) >> Post removed successfully!\n");
+            res.status(200).end();
+        });
+
+    });
+
+};
