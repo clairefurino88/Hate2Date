@@ -10,7 +10,7 @@ module.exports = function (app) {
 
     // Passport Login Authentication Route
     // If valid login, go to members page, otherwise, display error.
-    app.post("/login", passport.authenticate("local"), function (req, res) {
+    app.post("/api/login", passport.authenticate("local"), function (req, res) {
 
         // Since we're doing a POST with JS, we can't actually redirect POST to GET
         // so we're sending user back to members page because redirect will happen on front-end
@@ -22,10 +22,10 @@ module.exports = function (app) {
     // User Sign-Up Route
     // User password automatically hashed and stored securely with 'BCrypt."
     // Upon successful user creation, proceed to login, otherwise, display error.
-    app.post("/signup", function (req, res) {
+    app.post("/api/signup", function (req, res) {
 
         // Inspecting req.body
-        console.log("\n >> app.post('/signup'...) >> req.body: \n\n", req.body);
+        console.log("\n >> app.post('/api/signup'...) >> req.body: \n\n", req.body);
 
         db.User.create(req.body).then(function () {
             res.redirect(307, "/login");
@@ -33,14 +33,6 @@ module.exports = function (app) {
             console.log("\n >> app.post('/signup'...) >> error:\n\n", error);
             res.json(error);
         });
-
-    });
-
-    // Sign-Out Route
-    app.get("/logout", function (req, res) {
-
-        req.logout();
-        res.redirect("/");
 
     });
 
