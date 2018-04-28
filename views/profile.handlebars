@@ -31,6 +31,15 @@
 
     {{!-- Left Column --}}
     <div class="col-md-7 jumbotron">
+      <table>
+      {{#each posts}}
+      <tr>
+        <td>{{category}}</td>
+        <td>{{body}}</td>
+        <td>{{createdAt}}</td>
+      </tr>
+      {{/each}}
+      </table>
     </div>
 
     {{!-- Middle Column --}}
@@ -48,10 +57,10 @@
         <div class="panel-body" id="postFormPanelBody">
           <form id="cms">
             <div class="form-group">
-              <textarea class="form-control" rows="10" id="body" placeholder="I absolutely hate..."></textarea>
+              <textarea class="form-control" rows="10" id="postBody" placeholder="I absolutely hate..."></textarea>
               <br>
               <div class="form-group">
-                <select class="custom-select" id="category">
+                <select class="custom-select" id="postCategory">
                   <option value="null" selected="" disabled="">Category...</option>
                   <option value="Personal">Personal</option>
                   <option value="Product Review">Animals</option>
@@ -63,7 +72,7 @@
         </div>
         <div class="panel-footer">
           <div class="postFormSubmitButton">
-            <button data-id="{{id}}" id="postFormSubmit" type="submit" class="btn btn-success submit btn-lg">Submit</button>
+            <button id="postFormSubmit" type="submit" class="btn btn-success submit btn-lg">Submit</button>
           </div>
         </div>
       </div>

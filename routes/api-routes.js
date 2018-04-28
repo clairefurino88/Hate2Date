@@ -13,26 +13,22 @@ module.exports = function (app) {
     app.post("/api/login", passport.authenticate("local"), function (req, res) {
 
         // Since we're doing a POST with JS, we can't actually redirect POST to GET
-        // so we're sending user back to members page because redirect will happen on front-end
+        // so we're sending user back to members page with front-end redirect
         // User will not hit this page if not authenticated
         res.json("/members");
 
     });
 
     // User Sign-Up Route
-    // User password automatically hashed and stored securely with 'BCrypt."
+    // User password automatically encrypted\hashed with 'BCrypt."
     // Upon successful user creation, proceed to login, otherwise, display error.
     app.post("/api/signup", function (req, res) {
 
         // Inspecting req.body
-        console.log("\n >> app.post('/api/signup'...) >> req.body: \n\n", req.body);
+        // console.log("\n >> app.post('/api/signup'...) >> req.body: \n\n", req.body);
 
         db.User.create(req.body)
             .then(function (user) {
-                // console.log("\n >> app.post('/signup'...) >> user:\n\n", user);
-                // res.redirect(307, "/login");
-                // res.redirect('/members/user/'+ user.id);
-                // res.redirect('/', { method: 'GET'});
                 res.status(200).json('/login');
             })
             .catch(function (error) {
@@ -45,7 +41,7 @@ module.exports = function (app) {
     app.get("/api/user", function (req, res) {
 
         // Inspecting req.user
-        console.log("\n >> app.get('api/users/:id'...) >> req.user:\n\n", req.user);
+        // console.log("\n >> app.get('api/users/:id'...) >> req.user:\n\n", req.user);
 
         // If user not logged in, send empty object
         if (!req.user) {
@@ -59,7 +55,7 @@ module.exports = function (app) {
                 where: { id: req.user.id }
             }).then(function (dbUser) {
                 // Inspecting dbUser
-                console.log("\n >> app.get('api/users/:id'...) >> dbUser:\n\n", dbUser);
+                // console.log("\n >> app.get('api/users/:id'...) >> dbUser:\n\n", dbUser);
                 res.json({
                     id: dbUser.id,
                     name: dbUser.name,
@@ -79,7 +75,7 @@ module.exports = function (app) {
     app.get("/api/users/:id", function (req, res) {
 
         // Inspecting req.user
-        console.log("\n >> app.get('api/users/:id'...) >> req.user:\n\n", req.user);
+        // console.log("\n >> app.get('api/users/:id'...) >> req.user:\n\n", req.user);
 
         // If user not logged in, send empty object
         if (!req.user) {
@@ -92,7 +88,7 @@ module.exports = function (app) {
                 where: { id: req.params.id }
             }).then(function (dbUser) {
                 // Inspecting dbUser
-                console.log("\n >> app.get('api/users/:id'...) >> dbUser:\n\n", dbUser);
+                // console.log("\n >> app.get('api/users/:id'...) >> dbUser:\n\n", dbUser);
                 res.json(dbUser);
             });
         };
@@ -102,16 +98,11 @@ module.exports = function (app) {
     // API 'GET' Route To *Fetch All Posts*
     app.get("/api/posts", function (req, res) {
 
-        db.Post.findAll(
-            // Ordering by 'createdAt' in descending order
-            { order: ['createdAt', 'DESC'] }
-        ).then(function (data) {
-            // Rendering profile.handlebars
-            var hbsObject = { posts: data };
-            res.render("profile", hbsObject);
-            // Also sending back JSON data (if possible)
-            res.json(data);
-        });
+        db.Post.findAll({ order: Sequelize.col('createdAt', 'DESC') })
+            .then(function (data) {
+                var hbsObject = { posts: data };
+                res.render("profile", hbsObject);
+            });
 
     });
 
@@ -120,9 +111,15 @@ module.exports = function (app) {
 
         // Inspecting req.body
         console.log("\n >> app.get('/api/posts'...) >> req.body:\n\n", req.body);
-        db.Post.create(req.body).then(function (results) {
-            res.end();
-        });
+        console.log("\n >> app.get('/api/posts'...) >> req.user:\n\n", req.user);
+        db.Post.create({
+            body: req.body.body,
+            category: req.body.category,
+            UserId: req.user.id
+        })
+            .then(function (results) {
+                res.end();
+            });
 
     });
 
@@ -134,7 +131,7 @@ module.exports = function (app) {
         ).then(function (result) {
             if (result.changedRows === 0) return res.status(404).end();
             // Confirming Successful Post Update
-            console.log("\n >> app.put('/api/posts/:id...) >> Post updated successfully!\n");
+            // console.log("\n >> app.put('/api/posts/:id...) >> Post updated successfully!\n");
             res.status(200).end();
         });
 
@@ -148,7 +145,7 @@ module.exports = function (app) {
         ).then(function (result) {
             if (result.changedRows === 0) return res.status(404).end();
             // Confirming Successful Post Removal
-            console.log("\n >> app.delete('/api/posts/:id...) >> Post removed successfully!\n");
+            // console.log("\n >> app.delete('/api/posts/:id...) >> Post removed successfully!\n");
             res.status(200).end();
         });
 
