@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
 
+
 //Requiring MySQLSTORE to store our chat session and data
 // MySQLStore = require('connect-mysql')(session),
 //     options = {
