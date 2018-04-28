@@ -31,9 +31,9 @@
 
     {{!-- Left Column --}}
     <div class="col-md-7 jumbotron">
-      <table>
+      <table> 
       {{#each posts}}
-      <tr>
+      <tr style="background-color: #9E7BFF;" id="postStyle">
         <td>{{category}}</td>
         <td>{{body}}</td>
         <td>{{createdAt}}</td>
@@ -62,9 +62,16 @@
               <div class="form-group">
                 <select class="custom-select" id="postCategory">
                   <option value="null" selected="" disabled="">Category...</option>
-                  <option value="Personal">Personal</option>
-                  <option value="Product Review">Animals</option>
-                  <option value="Political">Politics</option>
+                  <option value="Donald Trump">Donald Trump</option>
+                  <option value="Vegans">Vegans</option>
+                  <option value="Cross Fit">Cross Fit</option>
+                  <option value="Cargo Pants">Cargo Pants</option>
+                  <option value="Morning Traffic">Morning Traffic</option>
+                  <option value="Selfie Sticks">Selfie Sticks</option>
+                  <option value="Teens">Teens</option>
+                  <option value="Code That Crashes">Code that crashes</option>
+                  <option value="Hillary Clinton">Hillary Clinton</option>
+                  <option value="Long Lines">Long Lines</option>
                 </select>
               </div>
             </div>

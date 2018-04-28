@@ -130,3 +130,9 @@ body{
     -webkit-mask-position: -50%;
   }
 }
+
+/* *************** BLOG STYLE *************** */
+
+#postStyle {
+  border-color: 1px solid black !important;
+}
