@@ -4,7 +4,7 @@
 Hate&Date is an application to work under the principle that mutual dislikes bring people closer than shared interests.
 Almost every dating app collects information regarding people's passions and hobbies. However, even if you and a 'match' on a dating site have a million things you both love, if one of you hates one thing the other person loves, your match wll be ruined. So instead, why not discuss what you hate?
 
-This application allows people to share stories in ten different categories about why they hate or what they hate about each category —  — using a blog forum.
+This application allows people to share stories in ten different categories about why they hate or what they hate about each category using a blog forum.
 
 Hate&Date is a new and refreshing way to find a real match. Hate&Date is making serious online dating more approachable by replacing cumbersome surveys and bios with a fun, alternative way to express your personality.
 

@@ -1,48 +1,81 @@
 <!-- Collect the nav links, forms, and other content for toggling -->
- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-   <ul class="nav navbar-nav">
-      <li class="active"><a href="/members"><span class="member-name" id="navbar-name"></span></a></li>
-       <li>
-       <form class="navbar-form navbar-right" id="search-bar">
-         <div class="form-group">
-           <input type="text" class="form-control" id="user-search" placeholder="Search Users">
-         </div>
-         <button type="submit" class="btn btn-default" id="search-btn" data-toggle="modal" data-target="#search-modal">Search</button>
-       </form>
-     </li>
-     <li>
-       <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a>
-     </li>
-    </ul>    
-   </div><!-- /.navbar-collapse -->
- </nav> <!-- End header -->
-</nav> <!-- End navigation -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav">
+    <li class="active">
+      <a href="/members">
+        <span class="member-name" id="navbar-name"></span>
+      </a>
+    </li>
+    <li>
+      <form class="navbar-form navbar-right" id="search-bar">
+        <div class="form-group">
+          <input type="text" class="form-control" id="user-search" placeholder="Search Users">
+        </div>
+        <button type="submit" class="btn btn-default" id="search-btn" data-toggle="modal" data-target="#search-modal">Search</button>
+      </form>
+    </li>
+    <li>
+      <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a>
+    </li>
+  </ul>
+</div>
+<!-- /.navbar-collapse -->
+</nav>
+<!-- End header -->
+</nav>
+<!-- End navigation -->
 
 <div class="container">
+
   <div class="row">
+
+    {{!-- Left Column --}}
     <div class="col-md-7 jumbotron">
-
     </div>
+
+    {{!-- Middle Column --}}
     <div class="col-md-1">
-
     </div>
+
+    {{!-- Right Column --}}
     <div class="col-md-4 jumbotron">
 
-    </div>
+      {{!-- Post Form Panel --}}
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Post Form</h3>
+        </div>
+        <div class="panel-body" id="postFormPanelBody">
+          <form id="cms">
+            <div class="form-group">
+              <textarea class="form-control" rows="10" id="body" placeholder="I absolutely hate..."></textarea>
+              <br>
+              <div class="form-group">
+                <select class="custom-select" id="category">
+                  <option value="null" selected="" disabled="">Category...</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Product Review">Animals</option>
+                  <option value="Political">Politics</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="panel-footer">
+          <div class="postFormSubmitButton">
+            <button data-id="{{id}}" id="postFormSubmit" type="submit" class="btn btn-success submit btn-lg">Submit</button>
+          </div>
+        </div>
+      </div>
+      {{!-- End of Post Form Panel --}}
 
+    </div>
+    {{!-- End of Right Column --}}
 
   </div>
+  {{!-- End of Row --}}
+
 </div>
+{{!-- End of Container --}}
 
-
-
-
-
-
-
-
-
-
- <script type="text/javascript" src="js/members.js"></script>
- <script type="text/javascript" src="js/APIs.js"></script>
- <script type="text/javascript" src="js/Customize_Interests.js"></script>
+<script type="text/javascript" src="js/members.js"></script>
