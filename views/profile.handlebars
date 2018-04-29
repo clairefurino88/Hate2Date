@@ -1,3 +1,24 @@
+{{!-- navbar header --}}
+<nav class="navbar navbar-default">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="navbar-header" id="login-navbar-header">
+        <a class="navbar-brand" href="/">
+          <div>
+            <img id="logo" src="/img/hnd_g.svg" alt="logo">
+          </div>
+        </a>
+        <h1 style="color: white" class="logo-text"> Hate&Date
+          <small>Get to know before you get annoyed.</small>
+        </h1>
+      </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</nav>
+{{!-- end of navbar header --}}
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav">
@@ -30,16 +51,19 @@
   <div class="row">
 
     {{!-- Left Column --}}
-    <div class="col-md-7 jumbotron">
-      <table> 
-      {{#each posts}}
-      <tr style="background-color: #9E7BFF;" id="postStyle">
-        <td>{{category}}</td>
-        <td>{{body}}</td>
-        <td>{{createdAt}}</td>
-      </tr>
-      {{/each}}
-      </table>
+
+    <div class="col-md-7 jumbotron" class="left-panel">
+      <div class="post-area">
+        {{#each posts}}
+        <div class="panel-heading" id="postStyle">{{category}}</div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            {{body}}
+            <div class="post-datetime">{{createdAt}}</div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
     </div>
 
     {{!-- Middle Column --}}
