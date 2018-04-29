@@ -114,8 +114,7 @@ module.exports = function (app) {
         console.log("\n >> app.get('/api/posts'...) >> req.user:\n\n", req.user);
         db.Post.create({
             body: req.body.body,
-            category: req.body.category,
-            UserId: req.user.id
+            category: req.body.category
         })
             .then(function (results) {
                 res.end();
