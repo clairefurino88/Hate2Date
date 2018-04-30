@@ -68,7 +68,7 @@
 
     {{!-- Left Column --}}
 
-    <div class="col-md-7 jumbotron" class="left-panel">
+    <div class="col-md-7" class="left-panel">
       <div class="post-area">
         <p id="liveFeedTitle">
           Hate Feed
@@ -77,8 +77,8 @@
           Share your story...
         </p>
         {{#each posts}}
-        <div class="panel">
-          <div class="panel-body post-panel">
+        <div class="panel post-panel">
+          <div class="panel-body">
             <div class="panel-heading" id="postStyle">{{User.name}}:</div>
             {{body}}
             <hr>
@@ -101,12 +101,12 @@
     </div>
 
     {{!-- Right Column --}}
-    <div class="col-md-4 jumbotron">
+    <div class="col-md-4">
 
       {{!-- Post Form Panel --}}
-      <div class="panel panel-default">
+      <div class="panel post-form">
         <div class="panel-heading">
-          <h3 class="panel-title">Post Form</h3>
+          <p id="liveFeedTitle" class="panel-title" >Post Form</p>
         </div>
         <div class="panel-body" id="postFormPanelBody">
           <form id="cms">
@@ -136,9 +136,9 @@
             </div>
           </form>
         </div>
-        <div class="panel-footer">
+        <div>
           <div class="postFormSubmitButton">
-            <button id="postFormSubmit" type="submit" class="btn btn-success submit btn-lg">Submit</button>
+          <center>  <button id="postFormSubmit" type="submit" class="btn btn-success submit btn-lg">Submit</button></center>
           </div>
         </div>
       </div>
