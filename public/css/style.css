@@ -180,8 +180,24 @@ body{
 #postStyle {
   border-color: 100px solid black !important;
   font-family:'Inconsolata', monospace;
-  font-size: 18px;
-  color: blue;
+  font-size: 22px;
+  color: black;
+  font-weight: bold;
+  margin-left: -14px;
+}
+
+p#liveFeedTitle {
+  font-family: 'Bree Serif', serif;
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+p#share {
+  text-align: center;
+  font-size: 12px;
+  color: rgb(212, 23, 23);
+  font-weight: bold;
 }
 
 .post-area {
