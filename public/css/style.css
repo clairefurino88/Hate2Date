@@ -4,13 +4,13 @@ body{
     
      
 }
-body{
-    background: url("/img/dating_people12.jpg") no-repeat center center fixed;
+/* body{
+    background: url("/img/dating_people.jpg") no-repeat center center fixed;
     background-size: cover;
  -webkit-background-size: cover;
  -moz-background-size: cover;
  -o-background-size: cover;
-}
+} */
 #logo {
     position:relative;
     top: -47px;
@@ -49,7 +49,7 @@ p#liveFeedTitle {
     margin-left: 0px; */
     left: 40px;
     border-radius: 5%;
-    line-height: 0.5;
+    line-height: 1.5;
     color: #ffffff;
 
   }
@@ -62,8 +62,12 @@ p#liveFeedTitle {
     /* margin-top: 75px; */
     border-radius: 5%;  
     text-align: justify;
-    text-indent: 60px;
+    /* text-indent: 60px; */
     color: #ffffff;
+    font-style: italic;
+  }
+  .mission{
+    font-style: italic;
   }
   .about-us{
     margin-right: 5px;
@@ -256,6 +260,29 @@ p#liveFeedTitle {
     margin-left: 9%;
   }
 }
+
+body {
+  margin: 0;
+  padding: 0;
+/*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
+  background: #333;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* The only rule that matters */
+#video-background {
+/*  making the video fullscreen  */
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+}
+
 @media screen and (max-width: 768px) {
   .aub1{
     width: 70px;
