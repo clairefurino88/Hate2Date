@@ -20,6 +20,10 @@ module.exports = function (app) {
 
   // Login Route for Login Page
   app.get("/login", function (req, res) {
+    // If user exists, send user to members page
+    if (req.user) {
+      return res.redirect("/members");
+    }
     res.render("login");
   });
 
@@ -46,29 +50,8 @@ module.exports = function (app) {
         console.log("\nhbsObject.posts: \n\n", hbsObject.posts);
         res.render("profile", hbsObject);
       });
-    // // Fetching all posts (ordered by 'updatedAt' in descending order)
-    // db.Post.findAll({ order: [['updatedAt', 'DESC']] })
-    //   .then(function (data) {
-    //     var hbsObject = { posts: data };
-    //     console.log("\nData: ", data);
-    //     res.render("profile", hbsObject);
-    //   });
 
   });
-
-  // app.get("/members/user/:user", isAuthenticated, function (req, res) {
-  //   // user id
-  //   var userId = req.params.user;
-  //   // Retrieve User Info From DB
-  //   db.User.findOne({ where: { id: userId } })
-  //     .then(function (user) {
-  //       res.render("profile", user);
-  //     })
-  //     .catch(function (error) {
-  //       console.log("\n >> app.get('/members/user/:user'...) >> error", error);
-  //       res.json(error);
-  //     })
-  // });
 
   // Sign-Out Route for Log-Out Button
   app.get("/logout", function (req, res) {

@@ -1,30 +1,30 @@
 {{!-- navbar header --}}
 <nav class="navbar navbar-default">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="navbar-header" id="login-navbar-header">
-          <a class="navbar-brand" href="/">
-            <div>
-              <img class="animated infinite pulse" id="logo" src="/img/hnd_g.svg" alt="logo">
-            </div>
-          </a>
-          <h1 style="color: white" class="logo-text animated infinite pulse "> Hate&Date</h1>
-        </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="navbar-header" id="login-navbar-header">
+        <a class="navbar-brand" href="/">
+          <div>
+            <img class="animated infinite pulse" id="logo" src="/img/hnd_g.svg" alt="logo">
+          </div>
+        </a>
+        <h1 style="color: white" class="logo-text animated infinite pulse "> Hate&Date</h1>
       </div>
-      <div class="col-md-3">
-        <div class="text-right">
-          <a href="/login">
-            <button type="button" class="btn aub1"> Login </button>
-          </a>
-          <a href="/about">
-            <button type="button" class="btn aub2">About Us</button>
-          </a>
-          <a href="/">
-            <button type="submit" class="btn aub3">sign up</button>
-          </a>
-        </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text-right">
+        <a href="/about">
+          <button type="button" class="btn aub2">About Us</button>
+        </a>
+        <a href="/logout">
+          <button type="button" id="logout-btn" class="btn aub2">Logout</button>
+        </a>
+        {{!--
+        <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a> --}}
+
       </div>
-  </nav>
+    </div>
+</nav>
 {{!-- end of navbar header --}}
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,6 +48,22 @@
 
 <div class="container">
 
+  {{!-- Categories Drop-Down Row --}}
+  <div class="row">
+
+    {{!-- Left Column --}}
+    <div class="col-md-7"></div>
+
+    {{!-- Middle Column --}}
+    <div class="col-md-1"></div>
+
+    {{!-- Right Column --}}
+    <div class="col-md-4"></div>
+
+  </div>
+  {{!-- End of Categories Drop-Down Row --}}
+
+{{!-- Feed\Post Form Row --}}
   <div class="row">
 
     {{!-- Left Column --}}
@@ -61,8 +77,8 @@
           Share your story...
         </p>
         {{#each posts}}
-        <div class="panel panel-default">
-          <div class="panel-body">
+        <div class="panel">
+          <div class="panel-body post-panel">
             <div class="panel-heading" id="postStyle">{{User.name}}:</div>
             {{body}}
             <hr>
@@ -75,6 +91,7 @@
             </div>
           </div>
         </div>
+
         {{/each}}
       </div>
     </div>
@@ -114,7 +131,6 @@
                   <option value="Teens">Teens</option>
                   <option value="Transportation">Transportation</option>
                   <option value="Weather">Weather</option>
-                  
                 </select>
               </div>
             </div>
@@ -132,7 +148,7 @@
     {{!-- End of Right Column --}}
 
   </div>
-  {{!-- End of Row --}}
+  {{!-- End of Feed\Post Form Row --}}
 
 </div>
 {{!-- End of Container --}}

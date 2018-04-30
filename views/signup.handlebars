@@ -29,13 +29,15 @@
     <div class="row">
       <div class="col-md-6 about">
 
-       <center>
-        {{!-- <div>
-          <img src="/img/hnd_con.png" alt="logo">
-        </div> --}}
+        <center>
+          {{!--
+          <div>
+            <img src="/img/hnd_con.png" alt="logo">
+          </div> --}}
         </center>
         <p>
-          
+
+         <center><h2 class="mission">Our Mission</h2> </center>
           <p>Hate&ampDate is an application to work under the principle that mutual dislikes bring people closer than shared interests.
           Almost every dating app collects information regarding people's passions and hobbies. However, even if you and
           a 'match' love many of the same things, if you disagree on one thing you hate, your match would be ruined. So instead,
@@ -44,8 +46,11 @@
           Morning — using a blog forum. Hate&ampDate is a new and refreshing way to find a real match. Hate&ampDate is making
           online dating more approachable by replacing cumbersome surveys and bios with a fun, alternative way to express
           your personality.
+
           </p>
-          <center> <img class="img-con" src="/img/hnd_con.png" alt="logo"></center>
+          <center>
+            <img class="img-con" src="/img/hnd_con.png" alt="logo">
+          </center>
         </p>
 
       </div>
@@ -74,10 +79,10 @@
           </div>
           <div class="form-group">
             <label for="exampleInputLocation">Location</label>
-            <br>
-            <select data-placeholder="Location (US State)" class="form-control selectpicker" id="location-input">
-
-              <option value="null" disabled="" selected="">Location (US State)</option>
+            <br> 
+            {{!-- <select data-placeholder="Location (US State)" class="form-control selectpicker" id="location-input"> --}}
+              <select class="form-control selectpicker" id="location-input">
+              <option value="null" disabled="" selected="">Location (US State)...</option>
               <option value="Alabama">Alabama</option>
               <option value="Alaska">Alaska</option>
               <option value="Arizona">Arizona</option>
@@ -126,8 +131,8 @@
           </div>
 
           <div class="form-group">
-            <label for="exampleInputImage">Profile Pic (url)</label>
-            <input type="text" class="form-control" id="image-input" placeholder="">
+            <label for="exampleInputImage">Profile Picture</label>
+            <input type="text" class="form-control" id="image-input" placeholder="Url...">
           </div>
           <div class="form-group">
             <label for="exampleInputBio">About You</label>
@@ -143,7 +148,7 @@
             <span class="msg"></span>
           </div>
 
-            <button type="submit" class="btn">Sign Up</button>
+          <button type="submit" class="btn">Sign Up</button>
 
         </form>
         <br />
@@ -160,8 +165,12 @@
 </div>
 <!-- End Wrapper -->
 
-{{!-- <footer>
+{{!--
+<footer>
   Hate2Date &copy; 2018
 </footer> --}}
-
+<video autoplay loop id="video-background" muted plays-inline>
+    <source src="/img/473287184.mp4"
+      type="video/mp4">
+  </video>
 <script type="text/javascript" src="js/signup.js"></script>
