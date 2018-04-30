@@ -13,7 +13,7 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
     // If user exists, send user to members page
     if (req.user) {
-      res.redirect("/members");
+      return res.redirect("/members");
     }
     res.render("signup");
   });
@@ -34,32 +34,41 @@ module.exports = function (app) {
   // Authenticated users sent to /members, otherwise redirected to signup page
   app.get("/members", isAuthenticated, function (req, res) {
 
-    // Logging User Info
+    // Logging Logged-On User Info
     console.log("\n >> req.user >> ", req.user);
 
-    // Fetching all posts
-    db.Post.findAll({ order: Sequelize.col('createdAt', 'DESC') })
-      .then(function (data) {
-        var hbsObject = { posts: data };
+    db.Post.findAll({
+      include: [db.User],
+      order: [['updatedAt', 'DESC']]
+    })
+      .then(function (dbUsers) {
+        var hbsObject = { posts: dbUsers };
+        console.log("\nhbsObject.posts: \n\n", hbsObject.posts);
         res.render("profile", hbsObject);
-    });
+      });
+    // // Fetching all posts (ordered by 'updatedAt' in descending order)
+    // db.Post.findAll({ order: [['updatedAt', 'DESC']] })
+    //   .then(function (data) {
+    //     var hbsObject = { posts: data };
+    //     console.log("\nData: ", data);
+    //     res.render("profile", hbsObject);
+    //   });
 
   });
 
-  app.get("/members/user/:user", isAuthenticated, function (req, res) {
-    // user id
-    var userId = req.params.user;
-    // Retrieve User Info From DB
-    db.User.findOne({ where: { id: userId } })
-      .then(function (user) {
-        // console.log("\n >> app.get('/members/user/:user'...) >> user", user);
-        res.render("profile", user);
-      })
-      .catch(function (error) {
-        console.log("\n >> app.get('/members/user/:user'...) >> error", error);
-        res.json(error);
-      })
-  });
+  // app.get("/members/user/:user", isAuthenticated, function (req, res) {
+  //   // user id
+  //   var userId = req.params.user;
+  //   // Retrieve User Info From DB
+  //   db.User.findOne({ where: { id: userId } })
+  //     .then(function (user) {
+  //       res.render("profile", user);
+  //     })
+  //     .catch(function (error) {
+  //       console.log("\n >> app.get('/members/user/:user'...) >> error", error);
+  //       res.json(error);
+  //     })
+  // });
 
   // Sign-Out Route for Log-Out Button
   app.get("/logout", function (req, res) {

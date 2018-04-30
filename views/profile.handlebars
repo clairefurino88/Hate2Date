@@ -53,11 +53,14 @@
     <div class="col-md-7 jumbotron" class="left-panel">
       <div class="post-area">
         {{#each posts}}
-        <div class="panel-heading" id="postStyle">{{category}}</div>
+        <div class="panel-heading" id="postStyle">{{User.name}} absolutely hates:</div>
         <div class="panel panel-default">
           <div class="panel-body">
             {{body}}
-            <div class="post-datetime">{{createdAt}}</div>
+            <hr>
+            <div class="post-category">Category: {{category}}</div>
+            <div class="post-datetime">{{updatedAt}}</div>
+            <div class="post-userid">{{UserId}}</div>
           </div>
         </div>
         {{/each}}

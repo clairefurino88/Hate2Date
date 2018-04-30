@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  // Getting references to our form and input
+  // References To Our Form Input IDs
   var signUpForm = $("form.signup");
   var nameInput = $("input#name-input");
   var emailInput = $("input#email-input");
@@ -11,7 +11,8 @@ $(document).ready(function () {
   var imageInput = $("#image-input");
   var bioInput = $("#bio-input");
 
-  // When the signup button is clicked, we validate the email and password are not blank
+
+  // Sign-Up Form Event Handler To Capture Data, Validate and Send to Database
   signUpForm.on("submit", function (event) {
 
     event.preventDefault();
@@ -25,40 +26,42 @@ $(document).ready(function () {
         password: passwordInput.val().trim(),
         occupation: occupationInput.val().trim(),
         relationshipType: relationshipTypeInput.val().trim(),
-        location: locationInput.val(), // trim() not required on list
+        location: locationInput.val(), // trim() not required on 'select' list
         image: imageInput.val().trim(),
         bio: bioInput.val().trim()
       };
 
-      // Sign up user
+      console.log("\nlocation: ", userData.location);
+
+      // Sign Up User
       signUpUser(userData);
 
     }
     else {
 
-      alert("All fields are required! Please complete before submitting!");
+      alert("Please complete all fields before submitting!");
 
     }
 
   });
 
-  // Performs 'post' to signup route.
-  // If successful, redirected to members page, otherwise, display error
+  // Sign Up User; If Successful, Redirect To Login Page
   function signUpUser(newUser) {
 
     $.ajax("/api/signup", {
-      type: 'POST',
-      data: newUser
-    }).then(function (pathname) {
-      
-      console.log("-----------url: \n", pathname);
-      var origin = window.location.origin;
-      var url = origin + pathname;
-      window.location.assign(url);
-      console.log(url);
-      
-      // If error, throw boostrap alert
-    }).catch(handleLoginErr);
+      method: 'POST',
+      data: newUser,
+    })
+      .then(function (pathname) {
+
+        console.log("-----------url: \n", pathname);
+        var origin = window.location.origin;
+        var url = origin + pathname;
+        window.location.assign(url);
+        console.log(url);
+
+        // If error, throw boostrap alert
+      }).catch(handleLoginErr);
 
   };
 
@@ -74,7 +77,7 @@ $(document).ready(function () {
 
     var isValid = true;
     $(".form-control").each(function () {
-      if ($(this).val() === "") {
+      if ($(this).val() === "" || $(this).val() === null) {
         isValid = false;
       }
     });
