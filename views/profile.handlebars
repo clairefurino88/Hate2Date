@@ -1,23 +1,29 @@
 {{!-- navbar header --}}
 <nav class="navbar navbar-default">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="navbar-header" id="login-navbar-header">
-        <a class="navbar-brand" href="/">
-          <div>
-            <img id="logo" src="/img/hnd_g.svg" alt="logo">
-          </div>
-        </a>
-        <h1 style="color: white" class="logo-text"> Hate&Date
-          <small>Get to know before you get annoyed.</small>
-        </h1>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="navbar-header" id="login-navbar-header">
+          <a class="navbar-brand" href="/">
+            <div>
+              <img class="animated infinite pulse" id="logo" src="/img/hnd_g.svg" alt="logo">
+            </div>
+          </a>
+          <h1 style="color: white" class="logo-text animated infinite pulse "> Hate&Date</h1>
+        </div>
       </div>
-    </div>
-    <div class="col-md-3">
-    </div>
-    <div class="col-md-1"></div>
-  </div>
-</nav>
+      <div class="col-md-3">
+        <div class="text-right">
+          <a href="/about">
+            <button type="button" class="btn aub2">About Us</button>
+          </a>
+           <a href="/logout">
+            <button type="button" id="logout-btn" class="btn aub2">Logout</button>
+           </a>
+      {{!-- <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a> --}}
+  
+        </div>
+      </div>
+  </nav>
 {{!-- end of navbar header --}}
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -27,14 +33,7 @@
         <span class="member-name" id="navbar-name"></span>
       </a>
     </li>
-    <li>
-      <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a>
-    </li>
-    <li>
-      <a href="/about">
-        <button type="button" class="btn">About Us</button>
-      </a>
-    </li>
+   
 
   </ul>
 </div>
@@ -52,17 +51,23 @@
 
     <div class="col-md-7 jumbotron" class="left-panel">
       <div class="post-area">
+        <p id="liveFeedTitle">
+          Hate Feed
+        </p>
+        <p id="share">
+          Share your story...
+        </p>
         {{#each posts}}
-        <div class="panel-heading" id="postStyle">{{User.name}} absolutely hates:</div>
         <div class="panel panel-default">
           <div class="panel-body">
+            <div class="panel-heading" id="postStyle">{{User.name}}:</div>
             {{body}}
             <hr>
-            <div class="post-category">Category: {{category}}</div>
             <div class="post-datetime">{{updatedAt}}</div>
-            <div class="post-userid">{{UserId}}</div>
+            <div class="post-category">Category: {{category}}</div>
           </div>
         </div>
+        
         {{/each}}
       </div>
     </div>
@@ -86,17 +91,23 @@
               <br>
               <div class="form-group">
                 <select class="custom-select" id="postCategory">
+                  Coding,Fashion,Food,Health,Love,People,Politics,School,Teens,Transportation,Weather
                   <option value="null" selected="" disabled="">Category...</option>
-                  <option value="Donald Trump">Donald Trump</option>
-                  <option value="Vegans">Vegans</option>
-                  <option value="Cross Fit">Cross Fit</option>
-                  <option value="Cargo Pants">Cargo Pants</option>
-                  <option value="Morning Traffic">Morning Traffic</option>
-                  <option value="Selfie Sticks">Selfie Sticks</option>
+                  <option value="Coding">Coding</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Fashion">Fashion</option>
+                  <option value="Food">Food</option>
+                  <option value="Health">Health</option>
+                  <option value="Love">Love</option>
+                  <option value="Money">Money</option>
+                  <option value="People">People</option>
+                  <option value="Politics">Politics</option>
+                  <option value="School">School</option>
+                  <option value="People">People</option>
                   <option value="Teens">Teens</option>
-                  <option value="Code That Crashes">Code that crashes</option>
-                  <option value="Hillary Clinton">Hillary Clinton</option>
-                  <option value="Long Lines">Long Lines</option>
+                  <option value="Transportation">Transportation</option>
+                  <option value="Weather">Weather</option>
+                  
                 </select>
               </div>
             </div>
