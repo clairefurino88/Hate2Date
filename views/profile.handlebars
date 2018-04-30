@@ -34,7 +34,9 @@
         <span class="member-name" id="navbar-name"></span>
       </a>
     </li>
-
+    <li>
+      <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a>
+    </li>
 
   </ul>
 </div>
@@ -82,6 +84,11 @@
             <hr>
             <div class="post-datetime">{{updatedAt}}</div>
             <div class="post-category">Category: {{category}}</div>
+            <br>
+            <div class="like-button">
+              <button type="button">I Hate That Too!</button>
+              <span class="count"></span>
+            </div>
           </div>
         </div>
 
@@ -124,7 +131,6 @@
                   <option value="Teens">Teens</option>
                   <option value="Transportation">Transportation</option>
                   <option value="Weather">Weather</option>
-
                 </select>
               </div>
             </div>
