@@ -57,7 +57,7 @@ module.exports = function (app) {
   app.get("/user", function (req, res) {
     // If user exists, send user to members page
     if (!req.user) {
-      res.redirect("/login");
+      return res.redirect("/login");
     }
     return res.render("user");
   });
