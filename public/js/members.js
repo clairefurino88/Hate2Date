@@ -48,7 +48,7 @@ $(document).ready(function () {
         }
 
         return data;
-
+//returning the data from the fetch function
       });
 
   };
