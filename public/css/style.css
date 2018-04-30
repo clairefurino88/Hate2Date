@@ -174,6 +174,10 @@ p#liveFeedTitle {
   background-color: #ffffff;
   color: #e1000e;
 }
+.hate-btn{
+  background: #e1000e ;
+  color: #ffffff;
+}
 
 .form-group:hover {
   -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, red 50%, rgba(0,0,0,.6) 70%);
