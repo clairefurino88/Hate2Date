@@ -1,22 +1,21 @@
 body{
      color: black;
      font-family: 'Roboto', sans-serif;
+    
      
 }
 body{
     background: url("/img/dating_people12.jpg") no-repeat center center fixed;
-    /* background-image: 100%;  */
     background-size: cover;
  -webkit-background-size: cover;
  -moz-background-size: cover;
  -o-background-size: cover;
- /* height: 600px; */
 }
 #logo {
     position:relative;
-    top: -48px;
-    width: 120px;
-    height: 120px;
+    top: -47px;
+    width: 70px;
+    height: 70px;
     padding: 5px;
     background: white;  
     border-radius: 16%;
@@ -35,14 +34,33 @@ body{
     margin-left: 0px; */
     left: 40px;
     border-radius: 5%;
+    line-height: 0.5;
+    color: #ffffff;
 
+  }
+  h5 {
+    font-size: 13px;
+    color: blue;
+    text-align: center;
   }
 .about {
     /* margin-top: 75px; */
     border-radius: 5%;  
     text-align: justify;
     text-indent: 60px;
+    color: #ffffff;
   }
+  .about-us{
+    margin-right: 5px;
+    border-radius: 5%;
+    /* border: 5px solid #ffffff;  */
+    background: url('/img/backround_of_about.jpg') no-repeat center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    
+    }
 
 .nav_back{
     background-image: url('/img/hnd_con.png');
@@ -65,7 +83,7 @@ body{
    color:#ffffff;
    box-shadow: 3px 3px #262f2a;
   }
-  .navbar, .sign_up, .about{
+  .navbar, .sign_up, .about, footer, .login-form{
   padding: 40px 31px 0 31px;
   box-shadow: 0 2px 4px 0 rgba(38, 47, 42, 1.0), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
   border: 0px solid black;
@@ -76,26 +94,48 @@ body{
   background: linear-gradient(to bottom right, #ad5389, #3c1053);
   
   }
+  .login-form{
+    color:#ffffff;
+    border-radius: 5%; 
+      }
   .form-group{
     margin-right: 30px;
+  }
+  .form-control{
+    height: 30px;
   }
   h2{
       color: #ffffff;
       font-family: 'Roboto', sans-serif;
       }
+.team-names{
+      font-size: 15px;
+      text-align: center;
+      color:#010101;
+}
+    
   .img-circle{
     border: 5px solid white;
     margin-right: 10px;
     box-shadow: 1px 2px;
+    margin-left: 8px;
+    margin-top: 10px;
 }
   .logo-text{
-      margin-left: 200px;
-      font-family: 'Bree Serif', serif;
-      text-shadow: 3px 3px #262f2a;
-      
+    margin-left: 113px;
+    font-family: 'Bree Serif', serif;
+    text-shadow: 3px 3px #262f2a;
+    margin-top: -18px;
+}
+.sign-foot{
+  position: fixed;
+  left: 0;
+ bottom: 0;
+ width: 100%;
   }
+
   .navbar{
-    height: 138px;
+    height: 90px;
   }
   .btn-signUp{
    margin-bottom: 10px;
@@ -155,4 +195,148 @@ body{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 12px;
 }
+@media screen and (max-width: 1024px) {
+  .team-img{
+    width: 20.666667%;
+  } 
+  .text-right{
+    margin-left: -42px;
+  }
+  .col-md-offset-2{
+    margin-left: 110px;
+  }
+  .col-md-offset-4{
+    margin-left: 294px;
+  }
+  .sign_up{
+    width: 442px;
+  }
+}
 
+@media screen and (max-width: 980px) {
+  .team-img{
+    width: 25.666667%;
+  } 
+  .col-md-offset-4{
+    margin-left: 170px;
+  }
+  .login-form{
+    width: 450px;
+    margin-left: 20%;
+    margin-top: 30px;
+  }
+  .about{
+    width: 560px;
+    margin-left: 13%;
+  }
+  .img-con{
+    margin-top: -31px;
+    margin-bottom: 21px;
+  }
+  .sign_up{
+    width: 540px;
+    margin-left: 9%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .aub1{
+    width: 70px;
+    margin-left: -29px;
+  }
+  .col-md-offset-2{
+    margin-left: 30px;
+  }
+}
+  
+@media screen and (max-width: 736px) {
+  .text-right{
+    margin-top: -60px;
+  }
+  .col-md-offset-2{
+    margin-left: 11%;
+  }
+}
+@media screen and (max-width: 414px) {
+  .team-img{
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 3%;
+  }
+  #logo{
+    margin-left: -24px;
+  }
+  .logo-text{
+    margin-top: -40px;
+  }
+  .btn{
+       height: 31px;
+}
+.text-right{
+  margin-top: -41px;
+}
+.login-form{
+  width: 310px;
+  height: 337px;
+  margin-left: 13%;
+}
+.img-con{
+  margin-top: -21px;
+    margin-left: -43px;
+}
+.sign_up{
+  left: -23px;
+  width: 390px;
+}
+.about{
+  margin-left: 4%;
+  width: 387px;
+  font-size: 12px;
+  height: 460px;
+  margin-bottom: 15px;
+}
+  }
+@media screen and (max-width: 375px) {
+  .logo-text{
+    margin-left: 90px;
+    font-size: 28px;
+    margin-top: -35px;
+  }
+    #logo{
+    margin-left: -37px;
+  }
+  .login-form {
+    width: 310px;
+    height: 332px;
+    margin-left: 9%;
+}
+.aub1{
+  height: 31px;
+  width: 67px;
+}
+.aub2{
+  height: 31px;
+  width: 91px;
+}
+.aub3{
+  height: 31px;
+  width: 80px;
+}
+.sign_up{
+  margin-left: 9%;
+  width: 350px;
+  margin-bottom: 33px;
+}
+.about{
+  margin-left: 3%;
+  width: 350px;
+  font-size: 12px;
+}
+}
+@media screen and (max-width: 320px) {
+  .login-form{
+    margin-left: 2%;
+}
+.team-img{
+  width: 61%;
+}
+}
