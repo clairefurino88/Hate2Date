@@ -53,6 +53,15 @@ module.exports = function (app) {
 
   });
 
+  // User profile page (not members!) for logged on user
+  app.get("/user", function (req, res) {
+    // If user exists, send user to members page
+    if (!req.user) {
+      res.redirect("/login");
+    }
+    res.render("user");
+  });
+
   // Sign-Out Route for Log-Out Button
   app.get("/logout", function (req, res) {
     req.logout();
