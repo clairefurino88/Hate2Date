@@ -19,6 +19,7 @@ $(document).ready(function(){
   
           // return data;
           res.render('user', {
+            image: data.imageUrl,
             name: data.name,
             email: data.email,
             occupation: data.occupation,
@@ -27,6 +28,7 @@ $(document).ready(function(){
           })
         });
     };
+
 
     $.ajax("/api/user", {
         method: 'GET'
@@ -46,4 +48,8 @@ $(document).ready(function(){
   
   
 })
+
+
+
+
 
