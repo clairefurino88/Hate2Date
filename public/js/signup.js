@@ -27,7 +27,7 @@ $(document).ready(function () {
         occupation: occupationInput.val().trim(),
         relationshipType: relationshipTypeInput.val().trim(),
         location: locationInput.val(), // trim() not required on 'select' list
-        image: imageInput.val().trim(),
+        imageUrl: imageInput.val().trim(),
         bio: bioInput.val().trim()
       };
 
