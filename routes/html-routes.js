@@ -59,7 +59,7 @@ module.exports = function (app) {
     if (!req.user) {
       res.redirect("/login");
     }
-    res.render("user");
+    return res.render("user");
   });
 
   // Sign-Out Route for Log-Out Button
