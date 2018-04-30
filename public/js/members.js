@@ -32,7 +32,7 @@ $(document).ready(function () {
 
   });
 
-
+//this function is a fetch function
   // Function To Retrieve Logged In User Info
   function fetchUser() {
 
