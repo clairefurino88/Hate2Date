@@ -26,32 +26,26 @@
       </nav>
       <div class="panel panel-default">
   <div class="panel-heading">About Me</div>
-  <div class="panel-body">
-    {{User.imageUrl}}
-    <br>
-    {{User.name}}
-    <br>
-    {{User.email}}
-    <br>
-    {{User.password}}
-    <br>
-    {{User.occupation}}
-    <br>
-    {{User.relationshipType}}
-    <br>
-    {{User.location}}
-    <br>
-    {{User.bio}}
-    
-  </div>
-</div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Panel title</h3>
-  </div>
   <div class="panel-body">
-    Panel content
+   {{!-- {{#each user}} --}}
+    <p>User Image: {{user.imageUrl}}</p> 
+    <br>
+    <p>Name: {{user.name}}</p> 
+    <br>
+    <p>Email: {{user.email}}</p> 
+    <br>
+    <p>Occupation: {{user.occupation}}</p>
+    <br>
+    <p>Relationship type: {{user.relationshipType}}</p>
+    <br>
+    <p>Location: {{user.location}}</p>
+    <br>
+    <p>Bio: {{user.bio}}</p>
+    <br>
+
+     {{!-- {{/each}} --}}
+    
   </div>
 </div>
 
