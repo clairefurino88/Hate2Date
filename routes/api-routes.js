@@ -42,16 +42,17 @@ module.exports = function (app) {
                 include: [db.Post],
                 where: { id: req.user.id }
             })
-                .then(function (dbUser) {
+                .then(function (data) {
+                    console.log('data =====> : ', data);
                     res.json({
-                        id: dbUser.id,
-                        name: dbUser.name,
-                        email: dbUser.email,
-                        occupation: dbUser.occupation,
-                        relationshipType: dbUser.relationshipType,
-                        location: dbUser.location,
-                        imageUrl: dbUser.imageUrl,
-                        bio: dbUser.bio
+                        id: data.id,
+                        name: data.name,
+                        email: data.email,
+                        occupation: data.occupation,
+                        relationshipType: data.relationshipType,
+                        location: data.location,
+                        imageUrl: data.imageUrl,
+                        bio: data.bio
                     });
                 });
         };
