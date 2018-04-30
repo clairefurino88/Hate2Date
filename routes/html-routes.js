@@ -47,11 +47,27 @@ module.exports = function (app) {
     })
       .then(function (dbUsers) {
         var hbsObject = { posts: dbUsers };
-        console.log("\nhbsObject.posts: \n\n", hbsObject.posts);
         res.render("profile", hbsObject);
       });
 
   });
+
+// Route for Posts View By Category
+app.get("/posts/category", isAuthenticated, function (req, res) {
+
+  console.log("\nreq: ", req);
+  db.Post.findAll({
+    include: [db.User],
+    where: { category: req.query.category},
+    order: [['updatedAt', 'DESC']]
+  })
+    .then(function (dbUsers) {
+      var hbsObject = { posts: dbUsers };
+      console.log("\n\n >> app.get('/posts/category'...)...hbsObject.posts", hbsObject.posts);
+      return res.render("profile", hbsObject);
+    });
+
+});
 
   // User profile page (not members!) for logged on user
   app.get("/user", function (req, res) {

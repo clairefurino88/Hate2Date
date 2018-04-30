@@ -1,31 +1,41 @@
 {{!-- navbar header --}}
 <nav class="navbar navbar-default">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="navbar-header" id="login-navbar-header">
-          <a class="navbar-brand" href="/">
-            <div>
-              <img class="animated infinite pulse" id="logo" src="/img/hnd_g.svg" alt="logo">
-            </div>
-          </a>
-          <h1 style="color: white" class="logo-text animated infinite pulse "> Hate&Date</h1>
-        </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="navbar-header" id="login-navbar-header">
+        <a class="navbar-brand" href="/">
+          <div>
+            <img class="animated infinite pulse" id="logo" src="/img/hnd_g.svg" alt="logo">
+          </div>
+        </a>
+        <h1 style="color: white" class="logo-text animated infinite pulse "> Hate&Date</h1>
       </div>
-      <div class="col-md-3">
-        <div class="text-right">
-          <a href="/about">
-            <button type="button" class="btn aub2">About Us</button>
-          </a>
-           <a href="/logout">
-            <button type="button" id="logout-btn" class="btn aub2">Logout</button>
-           </a>
-      {{!-- <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a> --}}
+    </div>
+    <div class="col-md-3">
+      <div class="text-right">
+        <a href="/about">
+          <button type="button" class="btn aub2">About Us</button>
+        </a>
+        <a href="/logout">
+          <button type="button" id="logout-btn" class="btn aub2">Logout</button>
+        </a>
+        {{!--
+        <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a> --}}
+
+      </div>
+    </div>
+  </div>
   
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="categoryButtons">
       </div>
-  </nav>
+    </div>
+  </div>
+</nav>
 {{!-- end of navbar header --}}
 <!-- Collect the nav links, forms, and other content for toggling -->
+{{!--
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav">
     <li class="active">
@@ -34,13 +44,15 @@
       </a>
     </li>
   </ul>
-</div>
+</div> --}}
 <!-- /.navbar-collapse -->
-</nav>
+{{!-- </nav> --}}
 <!-- End header -->
-</nav>
+{{!-- </nav> --}}
 <!-- End navigation -->
+
 <div class="container">
+
   <div class="row">
     {{!-- Left Column --}}
     <div class="col-md-7" class="left-panel">
@@ -51,10 +63,11 @@
         <p id="share">
           Share your story...
         </p>
+        <div id="h2dFeed">
         {{#each posts}}
         <div class="panel post-panel">
           <div class="panel-body">
-            <div class="panel-heading" id="postStyle">{{User.name}}:</div>
+            <div class="panel-heading postStyle">{{User.name}}:</div>
             {{body}}
             <hr>
             <div class="post-datetime">{{updatedAt}}</div>
@@ -62,12 +75,12 @@
             <br>
             <div class="like-button">
               <button class="hate-btn" type="button">I Hate That Too!</button>
-              <spain class="count"></spain>
+              <span class="count"></span>
             </div>
           </div>
         </div>
-        
         {{/each}}
+        </div>
       </div>
     </div>
     {{!-- Middle Column --}}
@@ -78,7 +91,7 @@
       {{!-- Post Form Panel --}}
       <div class="panel post-form">
         <div class="panel-heading">
-          <p id="liveFeedTitle" class="panel-title" >Post Form</p>
+          <p id="liveFeedTitle" class="panel-title">Post Form</p>
         </div>
         <div class="panel-body" id="postFormPanelBody">
           <form id="cms">
@@ -87,9 +100,10 @@
               <br>
               <div class="form-group">
                 <select class="custom-select" id="postCategory">
-                 
+
                   <option value="null" selected="" disabled="">Category...</option>
                   <option value="Coding">Coding</option>
+                  <option value="Education">Education</option>
                   <option value="Entertainment">Entertainment</option>
                   <option value="Fashion">Fashion</option>
                   <option value="Food">Food</option>
@@ -98,12 +112,11 @@
                   <option value="Money">Money</option>
                   <option value="People">People</option>
                   <option value="Politics">Politics</option>
-                  <option value="School">School</option>
                   <option value="People">People</option>
                   <option value="Teens">Teens</option>
                   <option value="Transportation">Transportation</option>
                   <option value="Weather">Weather</option>
-                  
+
                 </select>
               </div>
             </div>
@@ -111,7 +124,9 @@
         </div>
         <div>
           <div class="postFormSubmitButton">
-          <center>  <button id="postFormSubmit" type="submit" class="btn submit btn-lg">Submit</button></center>
+            <center>
+              <button id="postFormSubmit" type="submit" class="btn submit btn-lg">Submit</button>
+            </center>
           </div>
         </div>
       </div>
@@ -122,4 +137,5 @@
   {{!-- End of Row --}}
 </div>
 {{!-- End of Container --}}
-<script type="text/javascript" src="js/members.js"></script>
+
+<script src="js/members.js"></script>
