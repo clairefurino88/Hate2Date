@@ -39,21 +39,11 @@ module.exports = function (app) {
         if (!req.user) res.send('/login')
         else {
             db.User.findOne({
-                include: [db.Post],
+                include: [{ model: db.Post, order: [['updatedAt', 'DESC']] }],
                 where: { id: req.user.id }
             })
                 .then(function (data) {
-                    console.log('data =====> : ', data);
-                    res.json({
-                        id: data.id,
-                        name: data.name,
-                        email: data.email,
-                        occupation: data.occupation,
-                        relationshipType: data.relationshipType,
-                        location: data.location,
-                        imageUrl: data.imageUrl,
-                        bio: data.bio
-                    });
+                    res.json(data);
                 });
         };
     });
@@ -79,13 +69,13 @@ module.exports = function (app) {
     //---------------------------------------------//
 
     // API 'GET' Route To *Fetch All Posts*
-    app.get("/api/posts", function (req, res) {
-        db.Post.findAll({ order: [['updatedAt', 'DESC']] })
-            .then(function (data) {
-                var hbsObject = { posts: data };
-                res.render("profile", hbsObject);
-            });
-    });
+    // app.get("/api/posts", function (req, res) {
+    //     db.Post.findAll({ order: [['updatedAt', 'DESC']] })
+    //         .then(function (data) {
+    //             var hbsObject = { posts: data };
+    //             res.render("profile", hbsObject);
+    //         });
+    // });
 
     // API 'GET' Route To *Fetch All Posts for Particular Category*
     app.get("/api/posts/category", function (req, res) {
@@ -95,21 +85,36 @@ module.exports = function (app) {
             order: [['updatedAt', 'DESC']]
         })
             .then(function (data) {
-                console.log("\nData: ", data);
                 res.json(data);
             });
     });
 
     // API 'GET' Route To *Fetch All Posts for Particular User*
     app.get("/api/posts/user", function (req, res) {
-        db.Post.findAll({
-            where: { UserId: req.body.userId },
-            order: [['updatedAt', 'DESC']]
-        })
-            .then(function (data) {
-                var hbsObject = { posts: data };
-                res.render("profile", hbsObject);
-            });
+        // If User Not Logged In, Redirect To Login Page, Otherwise, Send User Info
+        if (!req.user) {
+            res.send('User Not Logged In');
+            return;
+        }
+        else {
+            db.User.findOne({
+                include: [{ model: db.Post, order: [['updatedAt', 'DESC']] }],
+                where: { id: req.user.id }
+            })
+                .then(function (data) {
+                    res.json(data);
+                    return;
+                });
+        };
+
+        // db.Post.findAll({
+        //     where: { UserId: req.body.userId },
+        //     order: [['updatedAt', 'DESC']]
+        // })
+        //     .then(function (data) {
+        //         var hbsObject = { posts: data };
+        //         res.render("profile", hbsObject);
+        //     });
     });
 
     // API 'POST' Route To Create *New Post*
