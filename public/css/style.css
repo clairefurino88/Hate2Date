@@ -452,16 +452,16 @@ body {
 .categoryButtons button {
   background: none;
   border: none;
-  height: 30px;
-  width: 7%;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: bold;
+  height: 30px;
+  padding: 0px 15px;
 }
 
 .categoryButtons button:hover {
   background: #e1000e;
-  width: 7%;
   }
+
 .container-fluid{
   background: #fff;
   width: 100% !important;
