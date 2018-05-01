@@ -11,11 +11,8 @@ module.exports = function (sequelize, DataTypes) {
         category: {
             type: DataTypes.TEXT,
             allowNull: false
-        },
-        likes: {
-            type: DataTypes.INTEGER,
-            allowNull: true
         }
+    
 
     });
 
