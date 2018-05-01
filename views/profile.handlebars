@@ -11,7 +11,7 @@
         <h1 style="color: white" class="logo-text animated infinite pulse "> Hate&Date</h1>
       </div>
     </div>
-   
+
     <div class="col-md-3">
       <div class="text-right">
 
@@ -30,13 +30,16 @@
     </div>
   </div>
   {{!-- End of Row --}}
-   <div class="row">
-    <div class="col-md-12">
-      <div class="categoryButtons">
+  <div class="container-fluid">
+    <div class="rows">
+      <div class="col-md-12">
+        <div class="categoryButtons">
+        </div>
       </div>
     </div>
   </div>
  </nav>
+
 {{!-- end of navbar header --}}
 <!-- Collect the nav links, forms, and other content for toggling -->
 {{!--
@@ -57,7 +60,7 @@
 
 <div class="container">
 
-  <div class="row">
+  <div class="row feed-row">
     {{!-- Left Column --}}
     <div class="col-md-7" class="left-panel">
       <div class="post-area">
@@ -68,23 +71,23 @@
           Share your story...
         </p>
         <div id="h2dFeed">
-        {{#each posts}}
-        <div class="panel post-panel">
-          <div class="panel-body">
-            <div class="panel-heading postStyle">{{User.name}}:</div>
-            {{body}}
-            <hr>
-            <div class="post-category">Category: {{category}}</div>
-            <div class="post-datetime">{{updatedAt}}</div>
-            <br>
-            <div class="like-button">
-              <button class="hate-btn" type="button">I Hate That Too!</button>
+          {{#each posts}}
+          <div class="panel post-panel">
+            <div class="panel-body">
+              <div class="panel-heading postStyle">{{User.name}}</div>
+              {{body}}
+              <hr>
+              <div class="post-category">Category: {{category}}</div>
+              <div class="post-datetime">{{updatedAt}}</div>
+              <br>
+              <div class="like-button">
+                <button class="hate-btn" type="button">I Hate That Too!</button>
 
-              <span class="count"></span>
+                <span class="count"></span>
+              </div>
             </div>
           </div>
-        </div>
-        {{/each}}
+          {{/each}}
         </div>
       </div>
     </div>
