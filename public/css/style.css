@@ -212,7 +212,7 @@ p#liveFeedTitle {
   margin-right: 10px;
 }
 
-#postStyle {
+.postStyle {
   border-color: 100px solid black !important;
   font-family:'Inconsolata', monospace;
   font-size: 22px;
@@ -405,4 +405,22 @@ body {
 .team-img{
   width: 61%;
 }
+}
+
+/* Category Buttons Styling */
+.categoryButtons {
+  background: white;
+  height: 30px;
+  text-align: center;
+}
+
+.categoryButtons button {
+  background: none;
+  border: none;
+  height: 30px;
+  width: 7%;
+}
+
+.categoryButtons button:hover {
+  background: #e1000e;
 }

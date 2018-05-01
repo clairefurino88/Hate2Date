@@ -10,6 +10,7 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function (app) {
 
 /////////////////////////// SIGNUP PAGE ///////////////////////////////////////////
+  
   // Root Route
   app.get("/", function (req, res) {
     // If user exists, send user to members page
@@ -19,8 +20,8 @@ module.exports = function (app) {
     res.render("signup");
   });
 
-
 /////////////////////////// LOGIN PAGE ///////////////////////////////////////////
+  
   app.get("/login", function (req, res) {
     // If user exists, send user to members page
     if (req.user) {
@@ -28,7 +29,6 @@ module.exports = function (app) {
     }
     res.render("login");
   });
-
 
   // Login Route for Sign-Up Form
   app.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), function (req, res) {
@@ -49,13 +49,31 @@ module.exports = function (app) {
     })
       .then(function (dbUsers) {
         var hbsObject = { posts: dbUsers };
-        console.log("\nhbsObject.posts: \n\n", hbsObject.posts);
         res.render("profile", hbsObject);
       });
 
   });
 
+// Route for Posts View By Category
+app.get("/posts/category", isAuthenticated, function (req, res) {
+
+  console.log("\nreq: ", req);
+  db.Post.findAll({
+    include: [db.User],
+    where: { category: req.query.category},
+    order: [['updatedAt', 'DESC']]
+  })
+    .then(function (dbUsers) {
+      var hbsObject = { posts: dbUsers };
+      console.log("\n\n >> app.get('/posts/category'...)...hbsObject.posts", hbsObject.posts);
+      return res.render("profile", hbsObject);
+    });
+
+});
+
 /////////////////////////// USER PAGE ///////////////////////////////////////////
+
+  // User profile page (not members!) for logged on user
   app.get("/user", function (req, res) {
     // If user exists, send user to members page
     if (!req.user) {
@@ -77,6 +95,7 @@ console.log("req.user", req.user);
   });
 
 /////////////////////////// LOGOUT ROUTE ///////////////////////////////////////////
+  
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");

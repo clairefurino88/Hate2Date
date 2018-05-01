@@ -90,12 +90,13 @@ module.exports = function (app) {
     // API 'GET' Route To *Fetch All Posts for Particular Category*
     app.get("/api/posts/category", function (req, res) {
         db.Post.findAll({
-            where: { category: req.body.category },
+            include: [db.User],
+            where: { category: req.query.category },
             order: [['updatedAt', 'DESC']]
         })
             .then(function (data) {
-                var hbsObject = { posts: data };
-                res.render("profile", hbsObject);
+                console.log("\nData: ", data);
+                res.json(data);
             });
     });
 

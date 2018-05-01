@@ -11,8 +11,10 @@
         <h1 style="color: white" class="logo-text animated infinite pulse "> Hate&Date</h1>
       </div>
     </div>
+   
     <div class="col-md-3">
       <div class="text-right">
+
         <a href="/user">
           <button type="button" class="btn aub2">Profile</button>
         </a>
@@ -25,13 +27,20 @@
         {{!--
         <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a> --}}
       </div>
-
     </div>
-
+  </div>
+  {{!-- End of Row --}}
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="categoryButtons">
+      </div>
+    </div>
   </div>
 </nav>
 {{!-- end of navbar header --}}
 <!-- Collect the nav links, forms, and other content for toggling -->
+{{!--
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav">
     <li class="active">
@@ -40,13 +49,15 @@
       </a>
     </li>
   </ul>
-</div>
+</div> --}}
 <!-- /.navbar-collapse -->
-</nav>
+{{!-- </nav> --}}
 <!-- End header -->
-</nav>
+{{!-- </nav> --}}
 <!-- End navigation -->
+
 <div class="container">
+
   <div class="row">
     {{!-- Left Column --}}
     <div class="col-md-7" class="left-panel">
@@ -57,10 +68,11 @@
         <p id="share">
           Share your story...
         </p>
+        <div id="h2dFeed">
         {{#each posts}}
         <div class="panel post-panel">
           <div class="panel-body">
-            <div class="panel-heading" id="postStyle">{{User.name}}:</div>
+            <div class="panel-heading postStyle">{{User.name}}:</div>
             {{body}}
             <hr>
             <div class="post-category">Category: {{category}}</div>
@@ -68,13 +80,13 @@
             <br>
             <div class="like-button">
               <button class="hate-btn" type="button">I Hate That Too!</button>
-              <spain class="count"></spain>
 
+              <span class="count"></span>
             </div>
           </div>
         </div>
-
         {{/each}}
+        </div>
       </div>
     </div>
     {{!-- Middle Column --}}
@@ -97,6 +109,7 @@
 
                   <option value="null" selected="" disabled="">Category...</option>
                   <option value="Coding">Coding</option>
+                  <option value="Education">Education</option>
                   <option value="Entertainment">Entertainment</option>
                   <option value="Fashion">Fashion</option>
                   <option value="Food">Food</option>
@@ -105,7 +118,6 @@
                   <option value="Money">Money</option>
                   <option value="People">People</option>
                   <option value="Politics">Politics</option>
-                  <option value="School">School</option>
                   <option value="People">People</option>
                   <option value="Teens">Teens</option>
                   <option value="Transportation">Transportation</option>
@@ -134,4 +146,5 @@
   <source src="/img/bg_profile1.mov" type="video/mp4">
 </video>
 {{!-- End of Container --}}
-<script type="text/javascript" src="js/members.js"></script>
+
+<script src="js/members.js"></script>
