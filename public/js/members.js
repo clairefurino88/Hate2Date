@@ -79,7 +79,7 @@ $(document).ready(function () {
       panelDiv.append(panelBodyDiv);
       panelBodyDiv.append(panelHeadingDiv);
       panelHeadingDiv.text(posts[i].User.name + ":");
-     $('<img>').attr("src", posts[i].User.imageUrl).appendTo(panelHeadingDiv);
+      $('<img>').attr("src", posts[i].User.imageUrl).appendTo(panelHeadingDiv);
       panelBodyDiv.append(bodyDiv);
       bodyDiv.append(posts[i].body).append(line);
       panelBodyDiv.append(timeStampDiv);
@@ -139,50 +139,50 @@ $(document).ready(function () {
       url: "/api/posts/likes",
       type: "PUT",
       data: postData
-    }).then(function(result){
+    }).then(function (result) {
       console.log(result);
     });
   })
 
-    var $counter = $(this).find(".count");
-    var count = $counter.text() | 0; //corose current count to an int
-    $counter.text(count + 1);//set new count
-  })
+  var $counter = $(this).find(".count");
+  var count = $counter.text() | 0; //corose current count to an int
+  $counter.text(count + 1);//set new count
 
+
+
+// Render Category Buttons
+function renderCategories() {
+
+  var catButtons = [
+    'Coding',
+    'Education',
+    'Entertainment',
+    'Fashion',
+    'Food',
+    'Health',
+    'Love',
+    'Money',
+    'People',
+    'Politics',
+    'People',
+    'Teens',
+    'Transportation',
+    'Weather'];
+
+  // Reference Category Div
+  var categoryDiv = $(".categoryButtons");
 
   // Render Category Buttons
-  function renderCategories() {
-
-    var catButtons = [
-      'Coding',
-      'Education',
-      'Entertainment',
-      'Fashion',
-      'Food',
-      'Health',
-      'Love',
-      'Money',
-      'People',
-      'Politics',
-      'People',
-      'Teens',
-      'Transportation',
-      'Weather'];
-
-    // Reference Category Div
-    var categoryDiv = $(".categoryButtons");
-
-    // Render Category Buttons
-    for (let i = 0; i < catButtons.length; i++) {
-      var button = $("<button>");
-      button.addClass("h2dCategories");
-      button.val(catButtons[i]).text(catButtons[i]);
-      categoryDiv.append(button);
-    };
-
+  for (let i = 0; i < catButtons.length; i++) {
+    var button = $("<button>");
+    button.addClass("h2dCategories");
+    button.val(catButtons[i]).text(catButtons[i]);
+    categoryDiv.append(button);
   };
 
+};
 
-  renderCategories();
+
+renderCategories();
 
 });
