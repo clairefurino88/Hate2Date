@@ -78,6 +78,7 @@ $(document).ready(function () {
       panelDiv.append(panelBodyDiv);
       panelBodyDiv.append(panelHeadingDiv);
       panelHeadingDiv.text(posts[i].User.name + ":");
+     $('<img>').attr("src", posts[i].User.imageUrl).appendTo(panelHeadingDiv);
       panelBodyDiv.append(bodyDiv);
       bodyDiv.append(posts[i].body).append(line);
       panelBodyDiv.append(timeStampDiv);
