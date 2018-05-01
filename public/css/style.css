@@ -1,16 +1,7 @@
 body{
      color: black;
      font-family: 'Roboto', sans-serif;
-    
-     
 }
-/* body{
-    background: url("/img/dating_people.jpg") no-repeat center center fixed;
-    background-size: cover;
- -webkit-background-size: cover;
- -moz-background-size: cover;
- -o-background-size: cover;
-} */
 #logo {
     position:relative;
     top: -47px;
@@ -31,14 +22,20 @@ p#liveFeedTitle {
   font-family: 'Bree Serif', serif;
   font-size: 30px;
   margin-bottom: 0;
+  text-shadow: 2px 2px #262f2a;
+  }
+.hate-feed{
+  margin: -29px 0 10px;
 }
+
 
 #share {
   text-align: center;
-  font-size: 11px;
+  font-size: 14px;
   margin-top: 0;
   font-weight: bolder;
   color: red;
+  text-shadow: 2px 2px #262f2a;
 }
 
 
@@ -102,7 +99,12 @@ p#liveFeedTitle {
    color:#ffffff;
    box-shadow: 3px 3px #262f2a;
   }
-  .navbar, .sign_up, .about, footer, .login-form, .col-md-7{
+  .btn-lg{
+    background: #ad5389;
+    margin-bottom: 15px;
+  }
+ 
+  .navbar, .sign_up, .about, footer, .login-form, .col-md-7, .about-me{
   padding: 40px 31px 0 31px;
   box-shadow: 0 2px 4px 0 rgba(38, 47, 42, 1.0), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
   border: 0px solid black;
@@ -121,7 +123,7 @@ p#liveFeedTitle {
     margin-right: 30px;
   }
   .form-control{
-    height: 30px;
+    height: 31px;
   }
   h2{
       color: #ffffff;
@@ -173,6 +175,10 @@ p#liveFeedTitle {
   background-color: #ffffff;
   color: #e1000e;
 }
+.hate-btn{
+  background: #e1000e ;
+  color: #ffffff;
+ }
 
 .form-group:hover {
   -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, red 50%, rgba(0,0,0,.6) 70%);
@@ -180,7 +186,13 @@ p#liveFeedTitle {
   animation: shine 2s infinite;
 }
 .post-panel{
-  box-shadow: 3px 3px #262f2a;
+  box-shadow: 4px 4px #262f2a;
+}
+.col-md-7, .post-form {
+  border-radius: 5%;
+}
+.post-form{
+  background: linear-gradient(to bottom right, #e1000e, black);
 }
 
 @-webkit-keyframes shine {
@@ -193,21 +205,24 @@ p#liveFeedTitle {
   }
 }
 
+
 /* *************** BLOG STYLE *************** */
+hr{
+  margin: 10px;
+}
 #left-panel{
   margin-left: 10px;
   margin-right: 10px;
 }
 
-#postStyle {
+.postStyle {
   border-color: 100px solid black !important;
   font-family:'Inconsolata', monospace;
-<<<<<<< HEAD
-  font-size: 22px;
+  font-size: 18px;
   color: black;
   font-weight: bold;
-  margin-left: -14px;
-}
+  margin-left: -25px;
+  }
 
 p#liveFeedTitle {
   font-family: 'Bree Serif', serif;
@@ -215,14 +230,9 @@ p#liveFeedTitle {
   text-align: center;
   margin-bottom: 0;
 }
-
-p#share {
-  font-size: 20px;
-  color: black;
-  font-weight: bold;
-  margin-left: -14px;
-  margin-bottom: -15px
-
+.post-category{
+  text-align: right;
+  text-decoration-line: underline;  
 }
 
 .post-area {
@@ -234,7 +244,98 @@ p#share {
 .post-datetime {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 12px;
+  margin-left: -25px;
+  margin-top: -10px;
 }
+.user-img-members{
+  widows: 50px;
+  height: 50px;
+}
+.feed-post{
+  margin-bottom: 10px;
+}
+/* **************************************style user.handlebars *********************************/
+.about-me{
+  border-radius: 2%;
+  }
+.am-panelHeading{
+  background: linear-gradient(to bottom right, #e1000e, black);
+  box-shadow: 0 2px 4px 0 rgba(38, 47, 42, 1.0), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+  color: #ffffff;
+  font-weight: bold;
+  
+}
+.user-img{
+  border: 3px solid #ffffff;
+  box-shadow: 3px 4px;
+  border-radius: 0% 10% 0% 10%;
+  width: 500px;
+  height: 362px;
+}
+.user-info-sec{
+  border: 3px solid #ffffff;
+  box-shadow: 3px 4px black;
+  border-radius: 10% 0% 10% 0%;
+  color: #ffffff;
+  }
+.user-info{
+  color: black;
+  font-size: 16px;
+  text-shadow: 1px 1px #646262;
+  font-weight: bolder;
+  text-decoration-line: underline;
+  }
+/* ************video backround style******** */
+body {
+  margin: 0;
+  padding: 0;
+/*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
+  background: #333;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* The only rule that matters */
+#video-background {
+/*  making the video fullscreen  */
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+}
+/* *********************************************************************** */
+/* Category Buttons Styling */
+.categoryButtons {
+  background: white;
+  height: 30px;
+  text-align: center;
+}
+
+.categoryButtons button {
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: bold;
+  height: 30px;
+  padding: 0px 15px;
+}
+
+.categoryButtons button:hover {
+  background: #e1000e;
+  }
+
+.container-fluid{
+  background: #fff;
+  width: 100% !important;
+  }
+  .feed-row{
+    margin-top: 25px;
+  }
+
 @media screen and (max-width: 1024px) {
   .team-img{
     width: 20.666667%;
@@ -279,27 +380,7 @@ p#share {
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-/*  Background fallback in case of IE8 & down, or in case video doens't load, such as with slower connections  */
-  background: #333;
-  background-attachment: fixed;
-  background-size: cover;
-}
 
-/* The only rule that matters */
-#video-background {
-/*  making the video fullscreen  */
-  position: fixed;
-  right: 0; 
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-  width: auto; 
-  height: auto;
-  z-index: -100;
-}
 
 @media screen and (max-width: 768px) {
   .aub1{
@@ -403,3 +484,6 @@ body {
   width: 61%;
 }
 }
+
+
+ 

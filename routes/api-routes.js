@@ -36,22 +36,23 @@ module.exports = function (app) {
     // API 'GET' Route To Retrieve Logged-On User Info
     app.get("/api/user", function (req, res) {
         // If User Not Logged In, Redirect To Login Page, Otherwise, Send User Info
-        if (!req.user) res.redirect('/login')
+        if (!req.user) res.send('/login')
         else {
             db.User.findOne({
                 include: [db.Post],
                 where: { id: req.user.id }
             })
-                .then(function (dbUser) {
+                .then(function (data) {
+                    console.log('data =====> : ', data);
                     res.json({
-                        id: dbUser.id,
-                        name: dbUser.name,
-                        email: dbUser.email,
-                        occupation: dbUser.occupation,
-                        relationshipType: dbUser.relationshipType,
-                        location: dbUser.location,
-                        imageUrl: dbUser.imageUrl,
-                        bio: dbUser.bio
+                        id: data.id,
+                        name: data.name,
+                        email: data.email,
+                        occupation: data.occupation,
+                        relationshipType: data.relationshipType,
+                        location: data.location,
+                        imageUrl: data.imageUrl,
+                        bio: data.bio
                     });
                 });
         };
@@ -89,12 +90,13 @@ module.exports = function (app) {
     // API 'GET' Route To *Fetch All Posts for Particular Category*
     app.get("/api/posts/category", function (req, res) {
         db.Post.findAll({
-            where: { category: req.body.category },
+            include: [db.User],
+            where: { category: req.query.category },
             order: [['updatedAt', 'DESC']]
         })
             .then(function (data) {
-                var hbsObject = { posts: data };
-                res.render("profile", hbsObject);
+                console.log("\nData: ", data);
+                res.json(data);
             });
     });
 
