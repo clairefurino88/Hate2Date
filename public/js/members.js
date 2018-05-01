@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
   // Retrieve Logged On User Info
-  var userInfo = fetchUser();  
+  var userInfo = fetchUser();
 
   // Post Form Event Handler...Sends Post to Database
   $("#postFormSubmit").on("click", function (event) {
@@ -53,11 +53,31 @@ $(document).ready(function () {
 
   };
 
-  $(".like-button").one("click", function(e){
-    var $counter = $(this).find(".count");
-    var count = $counter.text() | 0; //corose current count to an int
-    $counter.text(count + 1);//set new count
-})
+  $(".like-button").one("click", function (e) {
+    e.preventDefault();
+    var count = $(".count").text();
+    var countInt = parseInt(count);
+    countInt += 1;
+    count = countInt.toString();
+    $(".count").text(count);
+    console.log(count);
+
+
+    var postData = {
+      id: $(this).data("id"),
+      likes: count
+    }
+
+    console.log(postData);
+
+    $.ajax({
+      url: "/api/posts/likes",
+      type: "PUT",
+      data: postData
+    }).then(function(result){
+      console.log(result);
+    });
+  })
 
 });
 
