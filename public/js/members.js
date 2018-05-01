@@ -9,13 +9,18 @@ $(document).ready(function () {
     event.preventDefault();
     $("#h2dFeed").empty();
 
-    $.ajax("/api/posts/category", {
-      type: "GET",
-      data: { category: $(this).val() },
-      success: function (result) {
-        renderPostsByCategory(result);
-      }
-    });
+    var categoryInput = $(this).val();
+
+    if (categoryInput != 'All') {
+      $.ajax("/api/posts/category", {
+        type: "GET",
+        data: { category: categoryInput },
+        success: function (result) {
+          renderPostsByCategory(result);
+        }
+      });
+    }
+    else location.reload();
 
   });
 
@@ -54,43 +59,64 @@ $(document).ready(function () {
 
     for (let i = 0; i < posts.length; i++) {
 
+      // Reference to HTML Elements
       var panelDiv = $("<div>");
       var panelBodyDiv = $("<div>");
-      var panelHeadingDiv = $("<div>");
-      var bodyDiv = $("<div>");
-      var line = $("<hr>");
+      var row1Div = $("<div>"); // NEW
+      var col1Div = $("<div>"); // NEW
+      var image = $("<img>"); // NEW
+      var col2Div = $("<div>"); // NEW
+      var row2Div = $("<div>"); // NEW
+      var h4 = $("<h4>"); // NEW
+      var row3Div = $("<div>"); // NEW
       var timeStampDiv = $("<div>");
+      var col3Div = $("<div>");
       var categoryDiv = $("<div>");
-      var lineBreak = $("<br>");
+      var hr = $("<hr>");
+      var bodyDiv = $("<div>");
+      var br = $("<br>");
       var likeDiv = $("<div>");
       var hateButton = $("<button>");
       var countSpan = $("<span>");
 
+      // Add Classes to HTML Elements
       panelDiv.addClass("panel post-panel");
       panelBodyDiv.addClass("panel-body");
-      panelHeadingDiv.addClass("panel-heading postStyle");
-      bodyDiv.addClass("post-body");
+      row1Div.addClass("row");
+      col1Div.addClass("col-md-2");
+      image.addClass("user-img-members");
+      col2Div.addClass("col-md-5");
+      row2Div.addClass("row");
+      h4.addClass("postStyle");
+      row3Div.addClass("row");
       timeStampDiv.addClass("post-datetime");
+      col3Div.addClass("col-md-5");
       categoryDiv.addClass("post-category");
+      bodyDiv.addClass("feed-post");
       likeDiv.addClass("like-button");
-      hateButton.addClass("hate-btn");
       countSpan.addClass("count");
+      hateButton.addClass("hate-btn");
 
-      panelDiv.append(panelBodyDiv);
-      panelBodyDiv.append(panelHeadingDiv);
-      panelHeadingDiv.text(posts[i].User.name + ":");
-      $('<img>').attr("src", posts[i].User.imageUrl).appendTo(panelHeadingDiv);
-      panelBodyDiv.append(bodyDiv);
-      bodyDiv.append(posts[i].body).append(line);
-      panelBodyDiv.append(timeStampDiv);
-      timeStampDiv.text(posts[i].updatedAt);
-      panelBodyDiv.append(categoryDiv);
-      categoryDiv.text("Category: " + posts[i].category);
-      panelBodyDiv.append(lineBreak);
-      panelBodyDiv.append(likeDiv);
+      // Set Up HTML Elements
+      image.attr("src", posts[i].User.imageUrl); // User Image
+      col1Div.append(image);
+      h4.append(posts[i].User.name); // User Name
+      row2Div.append(h4);
+      timeStampDiv.append(posts[i].updatedAt);
+      row3Div.append(timeStampDiv);
+      col2Div.append(row2Div).append(row3Div);
+      categoryDiv.text("Category: " + posts[i].category); // Post Category
+      col3Div.append(categoryDiv);
+      row1Div.append(col1Div).append(col2Div).append(col3Div);
+      bodyDiv.append(posts[i].body);
       hateButton.text("I Hate That Too!");
       likeDiv.append(hateButton);
       likeDiv.append(countSpan);
+      panelBodyDiv.append(row1Div).append(hr);
+      panelBodyDiv.append(bodyDiv).append(br).append(likeDiv);
+      panelDiv.append(panelBodyDiv);
+
+      // Display HTML Elements
       $("#h2dFeed").append(panelDiv);
 
     };
@@ -117,39 +143,39 @@ $(document).ready(function () {
 
   };
 
-// Render Category Buttons
-function renderCategories() {
-
-  var catButtons = [
-    'Coding',
-    'Education',
-    'Entertainment',
-    'Fashion',
-    'Food',
-    'Health',
-    'Love',
-    'Money',
-    'People',
-    'Politics',
-    'People',
-    'Teens',
-    'Transportation',
-    'Weather'];
-
-  // Reference Category Div
-  var categoryDiv = $(".categoryButtons");
-
   // Render Category Buttons
-  for (let i = 0; i < catButtons.length; i++) {
-    var button = $("<button>");
-    button.addClass("h2dCategories");
-    button.val(catButtons[i]).text(catButtons[i]);
-    categoryDiv.append(button);
+  function renderCategories() {
+
+    var catButtons = [
+      'All',
+      'Coding',
+      'Education',
+      'Entertainment',
+      'Fashion',
+      'Food',
+      'Health',
+      'Love',
+      'Money',
+      'People',
+      'Politics',
+      'People',
+      'Teens',
+      'Transportation',
+      'Weather'];
+
+    // Reference Category Div
+    var categoryDiv = $(".categoryButtons");
+
+    // Render Category Buttons
+    for (let i = 0; i < catButtons.length; i++) {
+      var button = $("<button>");
+      button.addClass("h2dCategories");
+      button.val(catButtons[i]).text(catButtons[i]);
+      categoryDiv.append(button);
+    };
+
   };
 
-};
-
-
-renderCategories();
+  renderCategories();
 
 });
