@@ -140,16 +140,16 @@ module.exports = function (app) {
     // });
 
     // API 'PUT' Route for *Post Like Increment*
-    app.put("/api/posts/likes", function (req, res) {
-        console.log("MADE IT HERE!", req.body.id);
-        db.Post.update(req.body,
-            { where: { id: req.body.id } }
-        ).then(function (result) {
-            console.log("PUT-> result: ", result);
-            if (result.changedRows === 0) return res.status(404).end();
-            res.status(200).end();
-        });
-    });
+    // app.put("/api/posts/likes", function (req, res) {
+    //     console.log("MADE IT HERE!", req.body.id);
+    //     db.Post.update(req.body,
+    //         { where: { id: req.body.id } }
+    //     ).then(function (result) {
+    //         console.log("PUT-> result: ", result);
+    //         if (result.changedRows === 0) return res.status(404).end();
+    //         res.status(200).end();
+    //     });
+    // });
 
     // // API 'DELETE' Route To *Remove Post* Route
     // app.delete("/api/posts/:id", function (req, res) {

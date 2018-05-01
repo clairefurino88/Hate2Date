@@ -127,24 +127,28 @@ $(document).ready(function () {
     $(".count").text(count);
     console.log(count);
 
+  
+  //   var postData = {
+  //     id: $(this).data("id"),
+  //     likes: count
+  //   }
 
-    var postData = {
-      id: $(this).data("id"),
-      likes: count
-    }
+  //   console.log(postData);
 
-    console.log(postData);
-
-    $.ajax({
-      url: "/api/posts/likes",
-      type: "PUT",
-      data: postData
-    }).then(function (result) {
-      console.log(result);
-    });
+  //   $.ajax({
+  //     url: "/api/posts/likes",
+  //     type: "PUT",
+  //     data: postData
+  //   }).then(function (result) {
+  //     console.log(result);
+  //   });
   })
 
+<<<<<<< HEAD
   var $counter = $(this).find(".count");
+=======
+  // var $counter = $(this).find(".count");
+>>>>>>> 2b8b2b249caed05662ce8f3efaa13ecae093d056
   // var count = $counter.text() | 0; //corose current count to an int
   // $counter.text(count + 1);//set new count
 
