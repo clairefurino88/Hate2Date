@@ -440,10 +440,16 @@ body {
 }
 
 /* Category Buttons Styling */
+.col-md-12 {
+  width: 100%;
+  margin: none;
+  padding: none !important;
+}
 .categoryButtons {
   background: white;
   height: 30px;
   text-align: center;
+  width: 100%;
 }
 
 .categoryButtons button {
