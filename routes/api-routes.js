@@ -36,7 +36,7 @@ module.exports = function (app) {
     // API 'GET' Route To Retrieve Logged-On User Info
     app.get("/api/user", function (req, res) {
         // If User Not Logged In, Redirect To Login Page, Otherwise, Send User Info
-        if (!req.user) res.redirect('/login')
+        if (!req.user) res.send('/login')
         else {
             db.User.findOne({
                 include: [db.Post],
