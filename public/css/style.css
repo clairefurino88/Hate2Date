@@ -69,6 +69,7 @@ p#liveFeedTitle {
   .about-us{
     margin-right: 5px;
     border-radius: 5%;
+    width: 191px;
     /* border: 5px solid #ffffff;  */
     background: url('/img/backround_of_about.jpg') no-repeat center center;
     background-size: cover;
