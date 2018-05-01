@@ -70,6 +70,7 @@
         <p id="share">
           Share your story...
         </p>
+
         <div id="h2dFeed">
           {{#each posts}}
           <div class="panel post-panel">
@@ -95,11 +96,11 @@
 
 
               <br>
-              <div class="like-button">
-                <button class="hate-btn" type="button">I Hate That Too!</button>
-
-                <span class="count"></span>
+              <div data-id={{id}} class="like-button">
+              <button type="button">I Hate That Too!</button>
+              <span class="count">{{likes}}</span>
               </div>
+
             </div>
           </div>
           {{/each}}
