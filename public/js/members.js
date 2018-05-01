@@ -127,26 +127,26 @@ $(document).ready(function () {
     $(".count").text(count);
     console.log(count);
 
+  
+  //   var postData = {
+  //     id: $(this).data("id"),
+  //     likes: count
+  //   }
 
-    var postData = {
-      id: $(this).data("id"),
-      likes: count
-    }
+  //   console.log(postData);
 
-    console.log(postData);
-
-    $.ajax({
-      url: "/api/posts/likes",
-      type: "PUT",
-      data: postData
-    }).then(function (result) {
-      console.log(result);
-    });
+  //   $.ajax({
+  //     url: "/api/posts/likes",
+  //     type: "PUT",
+  //     data: postData
+  //   }).then(function (result) {
+  //     console.log(result);
+  //   });
   })
 
-  var $counter = $(this).find(".count");
-  var count = $counter.text() | 0; //corose current count to an int
-  $counter.text(count + 1);//set new count
+  // var $counter = $(this).find(".count");
+  // var count = $counter.text() | 0; //corose current count to an int
+  // $counter.text(count + 1);//set new count
 
 
 
