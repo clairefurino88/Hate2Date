@@ -1,55 +1,72 @@
-{{!-- navbar header --}}
 <nav class="navbar navbar-default">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="navbar-header" id="login-navbar-header">
-          <a class="navbar-brand" href="/">
-            <div>
-              <img class="animated infinite pulse" id="logo" src="/img/hnd_g.svg" alt="logo">
-            </div>
-          </a>
-          <h1 style="color: white" class="logo-text animated infinite pulse "> Hate&Date</h1>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="navbar-header" id="login-navbar-header">
+        <a class="navbar-brand" href="/">
+          <div>
+            <img class="animated infinite pulse" id="logo" src="/img/hnd_g.svg" alt="logo">
+          </div>
+        </a>
+        <h1 style="color: white" class="logo-text animated infinite pulse "> Hate&Date</h1>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text-right">
+        <a href="/about">
+          <button type="button" class="btn aub2">About Us</button>
+        </a>
+        <a href="/logout">
+          <button type="button" id="logout-btn" class="btn aub2">Logout</button>
+        </a>
+        {{!--
+        <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a> --}}
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="panel about-me">
+    <div class="panel-heading am-panelHeading">About Me</div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <img class="user-img" src="{{user.imageUrl}}">
+        </div>
+        <div class="col-md-6 user-info-sec">
+          <br>
+          <p>Name:
+            <span class="user-info">{{user.name}}</span>
+          </p>
+          <br>
+          <p>Email:
+            <span class="user-info"> {{user.email}}</span>
+          </p>
+          <br>
+          <p>Occupation:
+            <span class="user-info">{{user.occupation}}</span>
+          </p>
+          <br>
+          <p>Relationship type:
+            <span class="user-info">{{user.relationshipType}}</span>
+          </p>
+          <br>
+          <p>Location:
+            <span class="user-info">{{user.location}}</span>
+          </p>
+          <br>
+          <p>Bio:
+            <span class="user-info">{{user.bio}}</span>
+          </p>
+          <br> {{!-- {{/each}} --}}
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="text-right">
-          <a href="/about">
-            <button type="button" class="btn aub2">About Us</button>
-          </a>
-           <a href="/logout">
-            <button type="button" id="logout-btn" class="btn aub2">Logout</button>
-           </a>
-      {{!-- <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a> --}}
-        </div>
-      </div>
-      </div>
-      </nav>
-      <div class="panel panel-default">
-  <div class="panel-heading">About Me</div>
-
-  <div class="panel-body">
-{{!-- adding an element to display the image on the user page --}}
-    <img src="{{user.imageUrl}}"> 
-    
-    <br>
-    <p>Name: {{user.name}}</p> 
-    <br>
-    <p>Email: {{user.email}}</p> 
-    <br>
-    <p>Occupation: {{user.occupation}}</p>
-    <br>
-    <p>Relationship type: {{user.relationshipType}}</p>
-    <br>
-    <p>Location: {{user.location}}</p>
-    <br>
-    <p>Bio: {{user.bio}}</p>
-    <br>
-
-     {{!-- {{/each}} --}}
-    
+    </div>
   </div>
 </div>
 
+<video autoplay loop id="video-background" muted plays-inline>
+  <source src="/img/coders.mov" type="video/mp4">
+</video>
 
 <script type="text/javascript" src="js/user.js"></script>
-      
