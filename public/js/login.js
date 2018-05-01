@@ -1,4 +1,8 @@
 $(document).ready(function() {
+
+  // Login Check; Alter 'About' Page Buttons
+  loginCheck();
+
   // Getting references to our form and inputs
   var loginForm = $("form.login");
   var emailInput = $("input#email-input");
@@ -33,6 +37,24 @@ $(document).ready(function() {
     }).catch(function(err) {
       console.log(err);
     });
-  }
+  };
+
+  // Function Checks Login State; Alters 'About' Page Buttons
+  function loginCheck() {
+
+    $.ajax("/api/user", {
+      method: 'GET'
+    })
+      .then(function (result) {
+        if (result != "/login") {
+          $("#loginButton").text("Back to Members");
+          $("#loginAnchor").attr("href", "/");
+          $("#rootButton").text("Profile");
+          $("#rootAnchor").attr("href", "/user");
+        };
+        return;
+      });
+
+  };
 
 });
