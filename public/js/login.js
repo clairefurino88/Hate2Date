@@ -52,6 +52,9 @@ $(document).ready(function() {
           $("#rootButton").text("Profile");
           $("#rootAnchor").attr("href", "/user");
         };
+        if (result === "/login") {
+          $("#logout").css("display", "none");
+        }
         return;
       });
 
