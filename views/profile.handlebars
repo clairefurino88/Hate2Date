@@ -38,7 +38,7 @@
       </div>
     </div>
   </div>
- </nav>
+</nav>
 
 {{!-- end of navbar header --}}
 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,12 +74,25 @@
           {{#each posts}}
           <div class="panel post-panel">
             <div class="panel-body">
-              <img class="user-img" src="{{User.imageUrl}}">
-              <div class="panel-heading postStyle">{{User.name}}</div>
-              {{body}}
-              <hr>
-              <div class="post-category">Category: {{category}}</div>
-              <div class="post-datetime">{{updatedAt}}</div>
+              <div class="row">
+                <div class="col-md-2">
+                  <img class="user-img-members" src="{{User.imageUrl}}">
+                </div>
+                <div class="col-md-5">
+                  <div class="row">
+                    <h4 class="postStyle"> {{User.name}}</h4>
+                  </div>
+                  <div class="row">
+                    <div class="post-datetime">{{updatedAt}}</div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="post-category">Category: {{category}}</div>
+                </div>
+              </div>
+              <hr> {{body}}
+
+
               <br>
               <div class="like-button">
                 <button class="hate-btn" type="button">I Hate That Too!</button>
