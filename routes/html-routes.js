@@ -9,8 +9,8 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
 
-/////////////////////////// SIGNUP PAGE ///////////////////////////////////////////
-  
+  /////////////////////////// SIGNUP PAGE ///////////////////////////////////////////
+
   // Root Route
   app.get("/", function (req, res) {
     // If user exists, send user to members page
@@ -20,8 +20,8 @@ module.exports = function (app) {
     res.render("signup");
   });
 
-/////////////////////////// LOGIN PAGE ///////////////////////////////////////////
-  
+  /////////////////////////// LOGIN PAGE ///////////////////////////////////////////
+
   app.get("/login", function (req, res) {
     // If user exists, send user to members page
     if (req.user) {
@@ -54,24 +54,24 @@ module.exports = function (app) {
 
   });
 
-// Route for Posts View By Category
-app.get("/posts/category", isAuthenticated, function (req, res) {
+  // Route for Posts View By Category
+  app.get("/posts/category", isAuthenticated, function (req, res) {
 
-  console.log("\nreq: ", req);
-  db.Post.findAll({
-    include: [db.User],
-    where: { category: req.query.category},
-    order: [['updatedAt', 'DESC']]
-  })
-    .then(function (dbUsers) {
-      var hbsObject = { posts: dbUsers };
-      console.log("\n\n >> app.get('/posts/category'...)...hbsObject.posts", hbsObject.posts);
-      return res.render("profile", hbsObject);
-    });
+    console.log("\nreq: ", req);
+    db.Post.findAll({
+      include: [db.User],
+      where: { category: req.query.category },
+      order: [['updatedAt', 'DESC']]
+    })
+      .then(function (dbUsers) {
+        var hbsObject = { posts: dbUsers };
+        console.log("\n\n >> app.get('/posts/category'...)...hbsObject.posts", hbsObject.posts);
+        return res.render("profile", hbsObject);
+      });
 
-});
+  });
 
-/////////////////////////// USER PAGE ///////////////////////////////////////////
+  /////////////////////////// USER PAGE ///////////////////////////////////////////
 
   // User profile page (not members!) for logged on user
   app.get("/user", function (req, res) {
@@ -79,23 +79,20 @@ app.get("/posts/category", isAuthenticated, function (req, res) {
     if (!req.user) {
       return res.redirect("/login");
     }
-console.log("req.user", req.user);
+    // console.log("req.user", req.user);
     db.User.findOne({
-      where: {
-        id: req.user.id
-      }
+      include: [{ model: db.Post, order: [['updatedAt', 'DESC']] }],
+      where: { id: req.user.id }
     })
       .then(function (dbUser) {
         var hbsObject = { user: dbUser };
-        console.log("Object User", hbsObject.user);
-
         return res.render("user", hbsObject);
       });
 
   });
 
-/////////////////////////// LOGOUT ROUTE ///////////////////////////////////////////
-  
+  /////////////////////////// LOGOUT ROUTE ///////////////////////////////////////////
+
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");

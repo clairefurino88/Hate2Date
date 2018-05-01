@@ -93,7 +93,7 @@ $(document).ready(function () {
 
     };
 
-  }
+  };
 
   // Function To Retrieve Logged In User Info
   function fetchUser() {
