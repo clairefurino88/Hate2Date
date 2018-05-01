@@ -71,17 +71,20 @@
           Share your story...
         </p>
 
+        {{!-- Posts Feed --}}
         <div id="h2dFeed">
           {{#each posts}}
           <div class="panel post-panel">
             <div class="panel-body">
               <div class="row">
+
                 <div class="col-md-2">
                   <img class="user-img-members" src="{{User.imageUrl}}">
                 </div>
+
                 <div class="col-md-5">
                   <div class="row">
-                    <h4 class="postStyle"> {{User.name}}</h4>
+                    <h4 class="postStyle">{{User.name}}</h4>
                   </div>
                   <div class="row">
                     <div class="post-datetime">{{updatedAt}}</div>
@@ -90,26 +93,30 @@
                 <div class="col-md-5">
                   <div class="post-category">Category: {{category}}</div>
                 </div>
+
               </div>
-              <hr> 
-            <div class="feed-post">  {{body}}</div> 
-
-
+              <hr>
+              <div class="feed-post"> {{body}}</div>
               <br>
               <div data-id={{id}} class="like-button">
-              <button type="button">I Hate That Too!</button>
-              <span class="count">{{likes}}</span>
+                <button type="button" class="hate-btn">I Hate That Too!</button>
+                <span class="count">{{likes}}</span>
               </div>
-
             </div>
+            {{!-- End of Panel Body --}}
           </div>
-          {{/each}}
+          {{!-- End of Panel --}} {{/each}}
         </div>
+        {{!-- End of Posts Feed --}}
+
       </div>
+      {{!-- End of Posts Area --}}
     </div>
+    {{!-- End of Left Column --}} 
+    
     {{!-- Middle Column --}}
-    <div class="col-md-1">
-    </div>
+    <div class="col-md-1"></div>
+
     {{!-- Right Column --}}
     <div class="col-md-4">
       {{!-- Post Form Panel --}}
@@ -136,7 +143,6 @@
                   <option value="Money">Money</option>
                   <option value="People">People</option>
                   <option value="Politics">Politics</option>
-                  <option value="People">People</option>
                   <option value="Teens">Teens</option>
                   <option value="Transportation">Transportation</option>
                   <option value="Weather">Weather</option>
