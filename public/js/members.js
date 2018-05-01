@@ -158,7 +158,6 @@ $(document).ready(function () {
       'Money',
       'People',
       'Politics',
-      'People',
       'Teens',
       'Transportation',
       'Weather'];
