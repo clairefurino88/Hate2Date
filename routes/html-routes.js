@@ -9,6 +9,8 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
 
+/////////////////////////// SIGNUP PAGE ///////////////////////////////////////////
+  
   // Root Route
   app.get("/", function (req, res) {
     // If user exists, send user to members page
@@ -18,7 +20,8 @@ module.exports = function (app) {
     res.render("signup");
   });
 
-  // Login Route for Login Page
+/////////////////////////// LOGIN PAGE ///////////////////////////////////////////
+  
   app.get("/login", function (req, res) {
     // If user exists, send user to members page
     if (req.user) {
@@ -26,7 +29,6 @@ module.exports = function (app) {
     }
     res.render("login");
   });
-
 
   // Login Route for Sign-Up Form
   app.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), function (req, res) {
@@ -69,16 +71,31 @@ app.get("/posts/category", isAuthenticated, function (req, res) {
 
 });
 
+/////////////////////////// USER PAGE ///////////////////////////////////////////
+
   // User profile page (not members!) for logged on user
   app.get("/user", function (req, res) {
     // If user exists, send user to members page
     if (!req.user) {
       return res.redirect("/login");
     }
-    return res.render("user");
+console.log("req.user", req.user);
+    db.User.findOne({
+      where: {
+        id: req.user.id
+      }
+    })
+      .then(function (dbUser) {
+        var hbsObject = { user: dbUser };
+        console.log("Object User", hbsObject.user);
+
+        return res.render("user", hbsObject);
+      });
+
   });
 
-  // Sign-Out Route for Log-Out Button
+/////////////////////////// LOGOUT ROUTE ///////////////////////////////////////////
+  
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");

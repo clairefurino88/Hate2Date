@@ -11,8 +11,13 @@
         <h1 style="color: white" class="logo-text animated infinite pulse "> Hate&Date</h1>
       </div>
     </div>
+   
     <div class="col-md-3">
       <div class="text-right">
+
+        <a href="/user">
+          <button type="button" class="btn aub2">Profile</button>
+        </a>
         <a href="/about">
           <button type="button" class="btn aub2">About Us</button>
         </a>
@@ -21,10 +26,10 @@
         </a>
         {{!--
         <a class="navbar-brand" href="/logout" id="logout-btn">Logout</a> --}}
-
       </div>
     </div>
   </div>
+  {{!-- End of Row --}}
   
   <div class="row">
     <div class="col-md-12">
@@ -70,11 +75,12 @@
             <div class="panel-heading postStyle">{{User.name}}:</div>
             {{body}}
             <hr>
-            <div class="post-datetime">{{updatedAt}}</div>
             <div class="post-category">Category: {{category}}</div>
+            <div class="post-datetime">{{updatedAt}}</div>
             <br>
             <div class="like-button">
               <button class="hate-btn" type="button">I Hate That Too!</button>
+
               <span class="count"></span>
             </div>
           </div>
@@ -136,6 +142,9 @@
   </div>
   {{!-- End of Row --}}
 </div>
+<video autoplay loop id="video-background" muted plays-inline>
+  <source src="/img/bg_profile1.mov" type="video/mp4">
+</video>
 {{!-- End of Container --}}
 
 <script src="js/members.js"></script>
