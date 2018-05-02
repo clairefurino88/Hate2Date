@@ -135,6 +135,10 @@ p#liveFeedTitle {
       text-align: center;
       color:#010101;
 }
+
+.team-names a {
+  font-size: 21px;
+}
     
   .img-circle{
     border: 5px solid white;
