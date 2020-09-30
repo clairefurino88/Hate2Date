@@ -20,7 +20,7 @@ Hate&Date is a new and refreshing way to find a real match. Hate&Date is making 
 
 ## Authors
 
-* **Claire Furino** - *Back-End Work* [TEAM LEADER]
+* **Little C** - *Back-End Work* [TEAM LEADER]
 * **Luis Morel** - *Back-End Work*
 * **Arthur Carvalho** - *Back-End Work*
 * **Annie** - *Front-End Work*
